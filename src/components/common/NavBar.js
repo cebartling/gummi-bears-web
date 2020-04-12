@@ -1,5 +1,5 @@
 import React from "react";
-// import {Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 // import ProfilePicture from "./ProfilePicture";
 // import {useDispatch, useSelector} from "react-redux";
 // import {createActionSignIn, createActionSignOut} from "../redux/actions";
@@ -20,13 +20,22 @@ const NavBar = () => {
     return (
         <header>
             <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                {/*<Link to="/" className="navbar-brand">Invest Guru</Link>*/}
+                <Link to="/" className="navbar-brand">Gummi Bears</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"/>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <ul className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                            <Link to="/dashboard" className="nav-link">Dashboard</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/stocks" className="nav-link">Stocks</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/" className="nav-link">Welcome</Link>
+                        </li>
                         {/*{isAuthenticated && (*/}
                         {/*    <li className="nav-item">*/}
                         {/*        <Link to="/dashboard" className="nav-link">Dashboard</Link>*/}
