@@ -1,21 +1,47 @@
 import React from "react";
 import {Link} from "react-router-dom";
 // import ProfilePicture from "./ProfilePicture";
-// import {useDispatch, useSelector} from "react-redux";
-// import {createActionSignIn, createActionSignOut} from "../redux/actions";
-// import {isAuthenticatedSelector} from "../redux/selectors";
+import {useDispatch, useSelector} from "react-redux";
+import {createActionSignIn, createActionSignOut} from "../../redux/actions";
+import {isAuthenticatedSelector} from "../../redux/selectors";
 
 const NavBar = () => {
-    // const isAuthenticated = useSelector(isAuthenticatedSelector);
-    // const dispatch = useDispatch();
-    //
-    // const doSignOut = () => {
-    //     dispatch(createActionSignOut());
-    // };
-    //
-    // const doSignIn = () => {
-    //     dispatch(createActionSignIn());
-    // };
+    const isAuthenticated = useSelector(isAuthenticatedSelector);
+    const dispatch = useDispatch();
+
+    const doSignOut = () => {
+        dispatch(createActionSignOut());
+    };
+
+    const doSignIn = () => {
+        dispatch(createActionSignIn());
+    };
+
+    const renderAuthenticateMenuItems = () => {
+        return (
+            <React.Fragment>
+                <li className="nav-item">
+                    <Link to="/dashboard" className="nav-link">Dashboard</Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/stocks" className="nav-link">Stocks</Link>
+                </li>
+                <li className="nav-item">
+                    <Link to={{hash: ''}} className="nav-link" onClick={doSignOut}>Sign out</Link>
+                </li>
+            </React.Fragment>
+        );
+    };
+
+    const renderUnauthenticatedMenuItems = () => {
+        return (
+            <li className="nav-item">
+                <Link to={{hash: ''}}
+                      className="nav-link"
+                      onClick={doSignIn}>Sign in</Link>
+            </li>
+        );
+    };
 
     return (
         <header>
@@ -27,36 +53,8 @@ const NavBar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item">
-                            <Link to="/dashboard" className="nav-link">Dashboard</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/stocks" className="nav-link">Stocks</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/" className="nav-link">Welcome</Link>
-                        </li>
-                        {/*{isAuthenticated && (*/}
-                        {/*    <li className="nav-item">*/}
-                        {/*        <Link to="/dashboard" className="nav-link">Dashboard</Link>*/}
-                        {/*    </li>*/}
-                        {/*)}*/}
-                        {/*{isAuthenticated && (*/}
-                        {/*    <li className="nav-item">*/}
-                        {/*        <Link to="/profile" className="nav-link">Profile</Link>*/}
-                        {/*    </li>*/}
-                        {/*)}*/}
-                        {/*{isAuthenticated && (*/}
-                        {/*    <li className="nav-item">*/}
-                        {/*        <Link to={{hash: ''}} className="nav-link" onClick={doSignOut}>Sign out</Link>*/}
-                        {/*    </li>*/}
-                        {/*)}*/}
-                        {/*{!isAuthenticated && (*/}
-                        {/*    <li className="nav-item">*/}
-                        {/*        <Link to={{hash: ''}} className="nav-link" onClick={doSignIn}>Sign*/}
-                        {/*            in</Link>*/}
-                        {/*    </li>*/}
-                        {/*)}*/}
+                        {isAuthenticated && renderAuthenticateMenuItems()}
+                        {!isAuthenticated && renderUnauthenticatedMenuItems()}
                     </ul>
                     <ul className="navbar-nav">
                         <li className="nav-item">
