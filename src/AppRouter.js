@@ -10,6 +10,7 @@ import {useSelector} from "react-redux";
 import {isAuthenticatedSelector} from "./redux/selectors";
 import LoadingPage from "./pages/LoadingPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import ProfilePage from "./pages/ProfilePage";
 
 const AppRouter = () => {
     const isAuthenticated = useSelector(isAuthenticatedSelector);
@@ -41,6 +42,9 @@ const AppRouter = () => {
                         <GuardedRoute path="/stocks"
                                       exact
                                       component={StocksPage}/>
+                        <GuardedRoute path="/profile"
+                                      exact
+                                      component={ProfilePage}/>
                     </GuardProvider>
                     <GuardedRoute path="*"
                                   component={NotFoundPage}/>

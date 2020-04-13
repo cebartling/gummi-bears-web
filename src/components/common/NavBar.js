@@ -26,7 +26,7 @@ const NavBar = () => {
                     <Link to="/stocks" className="nav-link">Stocks</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/metrics" className="nav-link">Metrics</Link>
+                    <Link to="/profile" className="nav-link">Profile</Link>
                 </li>
             </React.Fragment>
         );
