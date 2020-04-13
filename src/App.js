@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.scss';
-import {BrowserRouter as Router} from 'react-router-dom';
 import AppRouter from './AppRouter';
 import NavBar from './components/common/NavBar';
 import {useAuth0} from './react-auth0-spa';
 import Footer from './components/common/Footer';
+import history from "./history";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
   const {loading} = useAuth0();
@@ -14,13 +15,13 @@ function App() {
   }
 
   return (
-      <Router>
-        <NavBar/>
-        <main role="main" className="container-fluid top-margin">
-          <AppRouter/>
-        </main>
-        <Footer/>
-      </Router>
+      <BrowserRouter history={history}>
+          <NavBar/>
+          <main role="main" className="container-fluid top-margin">
+              <AppRouter/>
+          </main>
+          <Footer/>
+      </BrowserRouter>
   );
 }
 

@@ -1,13 +1,26 @@
 import React from 'react';
-import {Route, Switch} from "react-router-dom";
+import {Switch} from "react-router-dom";
 import {CSSTransitionGroup} from "react-transition-group";
 import {useLocation} from "react-router";
 import DashboardPage from "./pages/DashboardPage";
 import StocksPage from "./pages/StocksPage";
 import WelcomePage from "./pages/WelcomePage";
+import {GuardedRoute, GuardProvider} from 'react-router-guards';
+import {useSelector} from "react-redux";
+import {isAuthenticatedSelector} from "./redux/selectors";
+import LoadingPage from "./pages/LoadingPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const AppRouter = () => {
+    const isAuthenticated = useSelector(isAuthenticatedSelector);
     const location = useLocation();
+
+    const requiresSignIn = (to, from, next) => {
+        if (isAuthenticated) {
+            next();
+        }
+        next.redirect('/');
+    };
 
     return (
         <CSSTransitionGroup
@@ -18,17 +31,21 @@ const AppRouter = () => {
             transitionAppearTimeout={500}
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}>
-            <Switch key={location.key} location={location}>
-                <Route path="/dashboard">
-                    <DashboardPage/>
-                </Route>
-                <Route path="/stocks">
-                    <StocksPage/>
-                </Route>
-                <Route path="/">
-                    <WelcomePage/>
-                </Route>
-            </Switch>
+            <GuardProvider loading={LoadingPage} error={NotFoundPage}>
+                <Switch key={location.key} location={location}>
+                    <GuardedRoute path="/" exact component={WelcomePage}/>
+                    <GuardProvider guards={[requiresSignIn]}>
+                        <GuardedRoute path="/dashboard"
+                                      exact
+                                      component={DashboardPage}/>
+                        <GuardedRoute path="/stocks"
+                                      exact
+                                      component={StocksPage}/>
+                    </GuardProvider>
+                    <GuardedRoute path="*"
+                                  component={NotFoundPage}/>
+                </Switch>
+            </GuardProvider>
         </CSSTransitionGroup>
     );
 };
