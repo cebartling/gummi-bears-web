@@ -27,7 +27,7 @@ const NavBar = () => {
                     <Link to="/stocks" className="nav-link">Stocks</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to={{hash: ''}} className="nav-link" onClick={doSignOut}>Sign out</Link>
+                    <Link to="/metrics" className="nav-link">Metrics</Link>
                 </li>
             </React.Fragment>
         );
@@ -39,6 +39,14 @@ const NavBar = () => {
                 <Link to={{hash: ''}}
                       className="nav-link"
                       onClick={doSignIn}>Sign in</Link>
+            </li>
+        );
+    };
+
+    const renderProfileMenuItems = () => {
+        return (
+            <li className="nav-item">
+                <Link to={{hash: ''}} className="nav-link" onClick={doSignOut}>Sign out</Link>
             </li>
         );
     };
@@ -57,9 +65,7 @@ const NavBar = () => {
                         {!isAuthenticated && renderUnauthenticatedMenuItems()}
                     </ul>
                     <ul className="navbar-nav">
-                        <li className="nav-item">
-                            {/*<ProfilePicture/>*/}
-                        </li>
+                        {isAuthenticated && renderProfileMenuItems()}
                     </ul>
                 </div>
             </nav>

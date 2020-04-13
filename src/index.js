@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// noinspection ES6UnusedImports
+import $ from 'jquery'; // eslint-disable-line no-unused-vars
+// noinspection ES6UnusedImports
+import Popper from 'popper.js'; // eslint-disable-line no-unused-vars
 import './scss/custom.scss';
 import './scss/animations.scss';
 import App from './App';
