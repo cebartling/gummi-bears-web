@@ -17,7 +17,7 @@ const NavBar = () => {
         dispatch(createActionSignIn());
     };
 
-    const renderAuthenticateMenuItems = () => {
+    const renderAuthenticateNavItems = () => {
         return (
             <React.Fragment>
                 <li className="nav-item">
@@ -33,7 +33,7 @@ const NavBar = () => {
         );
     };
 
-    const renderUnauthenticatedMenuItems = () => {
+    const renderSignInNavItem = () => {
         return (
             <li className="nav-item">
                 <Link to={{hash: ''}}
@@ -43,7 +43,7 @@ const NavBar = () => {
         );
     };
 
-    const renderProfileMenuItems = () => {
+    const renderSignOutNavItem = () => {
         return (
             <li className="nav-item">
                 <Link to={{hash: ''}} className="nav-link" onClick={doSignOut}>Sign out</Link>
@@ -61,11 +61,11 @@ const NavBar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <ul className="navbar-nav mr-auto">
-                        {isAuthenticated && renderAuthenticateMenuItems()}
-                        {!isAuthenticated && renderUnauthenticatedMenuItems()}
+                        {isAuthenticated && renderAuthenticateNavItems()}
                     </ul>
                     <ul className="navbar-nav">
-                        {isAuthenticated && renderProfileMenuItems()}
+                        {!isAuthenticated && renderSignInNavItem()}
+                        {isAuthenticated && renderSignOutNavItem()}
                     </ul>
                 </div>
             </nav>
