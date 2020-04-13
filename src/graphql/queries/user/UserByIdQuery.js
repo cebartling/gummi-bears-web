@@ -4,11 +4,9 @@ const UserByIdQuery = gql`
     query UserById($id: ID!) {
         userById(id: $id) {
             id
-            givenName
-            familyName
-            createdAt
-            updatedAt
-            email
+            firstName
+            lastName
+            username
         }
     }
 `;
