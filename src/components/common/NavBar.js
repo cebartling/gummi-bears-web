@@ -1,6 +1,5 @@
 import React from "react";
 import {Link} from "react-router-dom";
-// import ProfilePicture from "./ProfilePicture";
 import {useDispatch, useSelector} from "react-redux";
 import {createActionSignIn, createActionSignOut} from "../../redux/actions";
 import {isAuthenticatedSelector} from "../../redux/selectors";
