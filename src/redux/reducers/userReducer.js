@@ -1,10 +1,10 @@
-import {SET_AUTHENTICATED, SET_TOKEN, SET_USER} from "../actions";
-
+import {SET_AUTHENTICATED, SET_TOKEN, SET_USER, SET_USER_ID} from "../actions";
 
 const initialState = {
     email: 'maxwell.johnson@example.com',
     token: null,
-    isAuthenticated: false
+    isAuthenticated: false,
+    userId: null
 };
 
 const user = (state = initialState, action) => {
@@ -18,6 +18,9 @@ const user = (state = initialState, action) => {
         case SET_AUTHENTICATED:
             const {isAuthenticated} = action.payload;
             return Object.assign({}, state, {isAuthenticated});
+        case SET_USER_ID:
+            const {userId} = action.payload;
+            return Object.assign({}, state, {userId});
         default:
             return state;
     }

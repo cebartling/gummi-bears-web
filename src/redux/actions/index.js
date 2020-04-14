@@ -4,6 +4,8 @@ import {SIGN_IN, createActionSignIn} from "./auth/signIn";
 import {SIGN_OUT, createActionSignOut} from "./auth/signOut";
 import {SET_AUTHENTICATED, createActionSetAuthenticated} from "./auth/setAuthenticated";
 import {CREATE_USER, createActionCreateUser} from "./user/createUser";
+import {UPDATE_USER, createActionUpdateUser} from "./user/updateUser";
+import {SET_USER_ID, createActionSetUserId} from "./user/setUserId";
 
 export {
     SET_AUTHENTICATED,
@@ -12,6 +14,8 @@ export {
     SIGN_IN,
     SIGN_OUT,
     CREATE_USER,
+    UPDATE_USER,
+    SET_USER_ID,
 };
 
 export {
@@ -21,4 +25,6 @@ export {
     createActionSignIn,
     createActionSignOut,
     createActionCreateUser,
+    createActionUpdateUser,
+    createActionSetUserId,
 };
