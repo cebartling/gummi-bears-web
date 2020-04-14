@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {createActionSignIn, createActionSignOut} from "../../redux/actions";
 import {isAuthenticatedSelector} from "../../redux/selectors";
+import ProfilePicture from "./ProfilePicture";
 
 const NavBar = () => {
     const isAuthenticated = useSelector(isAuthenticatedSelector);
@@ -26,7 +27,7 @@ const NavBar = () => {
                     <Link to="/stocks" className="nav-link">Stocks</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/profile" className="nav-link">Profile</Link>
+                    <Link to={{hash: ''}} className="nav-link" onClick={doSignOut}>Sign out</Link>
                 </li>
             </React.Fragment>
         );
@@ -42,10 +43,12 @@ const NavBar = () => {
         );
     };
 
-    const renderSignOutNavItem = () => {
+    const renderProfilePictureNavItem = () => {
         return (
             <li className="nav-item">
-                <Link to={{hash: ''}} className="nav-link" onClick={doSignOut}>Sign out</Link>
+                <Link to="/profile" className="nav-link">
+                    <ProfilePicture/>
+                </Link>
             </li>
         );
     };
@@ -64,7 +67,7 @@ const NavBar = () => {
                     </ul>
                     <ul className="navbar-nav">
                         {!isAuthenticated && renderSignInNavItem()}
-                        {isAuthenticated && renderSignOutNavItem()}
+                        {isAuthenticated && renderProfilePictureNavItem()}
                     </ul>
                 </div>
             </nav>

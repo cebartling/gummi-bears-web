@@ -4,7 +4,7 @@ import {useQuery} from "@apollo/client";
 import UserByIdQuery from "../graphql/queries/user/UserByIdQuery";
 import {userIdSelector} from "../redux/selectors";
 
-function ProfilePage(props) {
+function ProfilePage() {
     const currentUserId = useSelector(userIdSelector);
     const {loading, error, data} = useQuery(UserByIdQuery, {
         variables: {
@@ -20,11 +20,11 @@ function ProfilePage(props) {
         return (<div>An error occurred with the GraphQL query.</div>);
     }
 
+    const user = data.userById;
+
     return (
         <React.Fragment>
-            <h1>Profile</h1>
-            <div>{currentUserId}</div>
-            <div>{JSON.stringify(data)}</div>
+            <h1>{user.firstName} {user.lastName}</h1>
         </React.Fragment>
     );
 }
