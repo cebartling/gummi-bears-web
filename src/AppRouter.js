@@ -3,7 +3,7 @@ import {Switch} from "react-router-dom";
 import {CSSTransitionGroup} from "react-transition-group";
 import {useLocation} from "react-router";
 import DashboardPage from "./pages/DashboardPage";
-import StocksPage from "./pages/StocksPage";
+import StocksListingPage from "./views/stocks/list/StocksListingPage";
 import WelcomePage from "./pages/WelcomePage";
 import {GuardedRoute, GuardProvider} from 'react-router-guards';
 import {useSelector} from "react-redux";
@@ -11,6 +11,7 @@ import {isAuthenticatedSelector} from "./redux/selectors";
 import LoadingPage from "./pages/LoadingPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProfilePage from "./pages/ProfilePage";
+import StockDetailPage from "./views/stocks/detail/StockDetailPage";
 
 const AppRouter = () => {
     const isAuthenticated = useSelector(isAuthenticatedSelector);
@@ -41,7 +42,10 @@ const AppRouter = () => {
                                       component={DashboardPage}/>
                         <GuardedRoute path="/stocks"
                                       exact
-                                      component={StocksPage}/>
+                                      component={StocksListingPage}/>
+                        <GuardedRoute path="/stock/{id}"
+                                      exact
+                                      component={StockDetailPage}/>
                         <GuardedRoute path="/profile"
                                       exact
                                       component={ProfilePage}/>
