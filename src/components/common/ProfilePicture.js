@@ -1,16 +1,8 @@
 import React from "react";
 import {CSSTransitionGroup} from "react-transition-group";
 import './ProfilePicture.scss';
-import {useSelector} from "react-redux";
-import {isAuthenticatedSelector, profilePictureUrlSelector} from "../../redux/selectors";
 
-const ProfilePicture = () => {
-    const isAuthenticated = useSelector(isAuthenticatedSelector);
-    const profilePictureUrl = useSelector(profilePictureUrlSelector);
-
-    if (!isAuthenticated) {
-        return null;
-    }
+const ProfilePicture = (props) => {
 
     return (
         <CSSTransitionGroup
@@ -21,7 +13,7 @@ const ProfilePicture = () => {
             transitionEnterTimeout={0}
             transitionLeave={false}
             transitionLeaveTimeout={0}>
-            <img className="profile-picture" src={profilePictureUrl} alt="Profile image"/>
+            <img className="profile-picture" src={props.src} alt="Profile"/>
         </CSSTransitionGroup>
     );
 };

@@ -2,11 +2,12 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {createActionSignIn, createActionSignOut} from "../../redux/actions";
-import {isAuthenticatedSelector} from "../../redux/selectors";
+import {isAuthenticatedSelector, profilePictureUrlSelector} from "../../redux/selectors";
 import ProfilePicture from "./ProfilePicture";
 
 const NavBar = () => {
     const isAuthenticated = useSelector(isAuthenticatedSelector);
+    const profilePictureUrl = useSelector(profilePictureUrlSelector);
     const dispatch = useDispatch();
 
     const doSignOut = () => {
@@ -47,7 +48,7 @@ const NavBar = () => {
         return (
             <li className="nav-item">
                 <Link to="/profile" className="nav-link">
-                    <ProfilePicture/>
+                    <ProfilePicture src={profilePictureUrl}/>
                 </Link>
             </li>
         );
