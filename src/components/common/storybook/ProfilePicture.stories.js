@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfilePicture from "./ProfilePicture";
+import ProfilePicture from "../ProfilePicture";
 import imageFile from './DefaultProfilePicture.png';
 
 export default {
