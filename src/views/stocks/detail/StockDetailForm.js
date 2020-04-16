@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {useField, useForm} from "react-form";
 import "./StockDetailForm.scss";
 
@@ -65,7 +66,7 @@ function SymbolField() {
     );
 }
 
-function StockDetailForm(props) {
+function StockDetailForm({debugForm = false}) {
     // Use the useForm hook to create a form instance
     const useFormOptions = {
         onSubmit: async (values, instance) => {
@@ -74,7 +75,7 @@ function StockDetailForm(props) {
             await sendToFakeServer(values);
             console.log("Huzzah!");
         },
-        debugForm: props.debugForm
+        debugForm: debugForm
     };
     const {Form, meta: {isSubmitting, canSubmit}} = useForm(useFormOptions);
 
@@ -92,6 +93,10 @@ function StockDetailForm(props) {
         </Form>
     );
 }
+
+StockDetailForm.propTypes = {
+    debugForm: PropTypes.bool
+};
 
 export default StockDetailForm;
 
