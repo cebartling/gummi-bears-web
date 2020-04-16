@@ -10,12 +10,14 @@ export default {
 
 export const defaultForm = () => (
     <div className="container mt-3">
+        <h2>Stock Detail Form</h2>
         <StockDetailForm/>
     </div>
 );
 
 export const debuggingForm = () => (
     <div className="container mt-3">
+        <h2>Stock Detail Form with form debugging</h2>
         <StockDetailForm debugForm={true}/>
     </div>
 );

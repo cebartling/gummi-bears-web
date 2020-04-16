@@ -17,7 +17,7 @@ const data = [
 
 export const defaultTable = () => (
     <div className="container mt-3">
-        <h2>Companies</h2>
+        <h2>Stocks Listing Table</h2>
         <StocksListingTable data={data}/>
     </div>
 );
