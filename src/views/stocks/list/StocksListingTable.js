@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 function buildPriceString(price) {
     const dollars = Math.floor(price / 100);
