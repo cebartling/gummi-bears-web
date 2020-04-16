@@ -40,7 +40,7 @@ function CompanyNameField() {
             <div className="col-sm-6">
                 <input {...getInputProps()} id="companyName" className="form-control"/>
             </div>
-            <div className="col-sm-4">
+            <div className="col-sm-4 validation-error__message">
                 {isValidating ? (<em>Validating...</em>) : isTouched && error ? (<em>{error}</em>) : null}
             </div>
         </div>
@@ -59,7 +59,7 @@ function SymbolField() {
             <div className="col-sm-2">
                 <input {...getInputProps()} id="stockSymbol" className="form-control symbol-field"/>
             </div>
-            <div className="col-sm-8">
+            <div className="col-sm-8 validation-error__message">
                 {isValidating ? (<em>Validating...</em>) : isTouched && error ? (<em>{error}</em>) : null}
             </div>
         </div>
