@@ -10,28 +10,30 @@ function buildPriceString(price) {
 function StocksListingTable({data}) {
 
     return (
-        <table className="table">
-            <thead>
-            <tr>
-                <th scope="col">Company name</th>
-                <th scope="col">Stock symbol</th>
-                <th scope="col" className="text-right">Open</th>
-                <th scope="col" className="text-right">High</th>
-                <th scope="col" className="text-right">Low</th>
-            </tr>
-            </thead>
-            <tbody>
-            {data.map((item) => (
+        <div className="row">
+            <table className="table table-bordered table-striped table-hover">
+                <thead>
                 <tr>
-                    <td>{item.companyName}</td>
-                    <td>{item.stockSymbol}</td>
-                    <td className="text-right">{buildPriceString(item.openPrice)}</td>
-                    <td className="text-right">{buildPriceString(item.highPrice)}</td>
-                    <td className="text-right">{buildPriceString(item.lowPrice)}</td>
+                    <th scope="col">Company name</th>
+                    <th scope="col">Stock symbol</th>
+                    <th scope="col" className="text-right">Open</th>
+                    <th scope="col" className="text-right">High</th>
+                    <th scope="col" className="text-right">Low</th>
                 </tr>
-            ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {data.map((item) => (
+                    <tr>
+                        <td>{item.companyName}</td>
+                        <td>{item.stockSymbol}</td>
+                        <td className="text-right">{buildPriceString(item.openPrice)}</td>
+                        <td className="text-right">{buildPriceString(item.highPrice)}</td>
+                        <td className="text-right">{buildPriceString(item.lowPrice)}</td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+        </div>
     );
 }
 

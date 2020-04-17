@@ -2,7 +2,7 @@ import React from 'react';
 
 function StocksListingToolbar(props) {
     return (
-        <div className="row">
+        <div className="row mb-sm-3">
             <button className="btn btn-success">Add new stock</button>
             <form className="form-inline my-2 my-lg-0 ">
                 <input className="form-control mr-sm-2 ml-sm-2"
