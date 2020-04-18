@@ -3,9 +3,9 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 
-function StocksListingTable({stocks}) {
+function StocksListingTable({userStocks}) {
 
-    if (!stocks) {
+    if (!userStocks) {
         return (
             <div className="row">
                 <div className="alert alert-info">
@@ -28,10 +28,10 @@ function StocksListingTable({stocks}) {
                 </tr>
                 </thead>
                 <tbody>
-                {stocks.map((stock) => (
+                {userStocks.map((userStock) => (
                     <tr>
-                        <td>{stock.name}</td>
-                        <td>{stock.symbol}</td>
+                        <td>{userStock.stock.name}</td>
+                        <td>{userStock.stock.symbol}</td>
                         {/*<td className="text-right">{buildPriceString(stock.openPrice)}</td>*/}
                         {/*<td className="text-right">{buildPriceString(stock.highPrice)}</td>*/}
                         {/*<td className="text-right">{buildPriceString(stock.lowPrice)}</td>*/}

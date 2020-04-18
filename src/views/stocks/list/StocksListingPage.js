@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import {userIdSelector} from "../../../redux/selectors";
 import {useQuery} from "@apollo/client";
 import UserByIdQuery from "../../../graphql/queries/user/UserByIdQuery";
+import LoadingAlert from "../../../components/common/LoadingAlert";
 
 function StocksListingPage(props) {
     const currentUserId = useSelector(userIdSelector);
@@ -14,18 +15,15 @@ function StocksListingPage(props) {
     });
 
     if (loading) {
-        return (<div>Loading profile...</div>);
+        return (<LoadingAlert message="Please wait while the stocks information is loaded."/>);
     }
 
     if (error) {
         return (<div>An error occurred with the GraphQL query.</div>);
     }
 
-    const user = data.userById;
-    const stocks = data.userById.stocks.map((userStock) => userStock.stock)
-
     return (
-        <StocksListingView stocks={stocks}/>
+        <StocksListingView userStocks={data.userById.stocks}/>
     );
 }
 
