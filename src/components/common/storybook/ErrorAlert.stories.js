@@ -8,7 +8,7 @@ export default {
 
 export const defaultComponent = () => {
     return (
-        <div className="container">
+        <div className="container p-3">
             <ErrorAlert message="Unable to load your information at this time."/>
         </div>
     );
