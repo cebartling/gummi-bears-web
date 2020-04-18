@@ -7,7 +7,6 @@ import UserByIdQuery from "../../../graphql/queries/user/UserByIdQuery";
 
 function StocksListingPage(props) {
     const currentUserId = useSelector(userIdSelector);
-    // TODO: StocksByUserIdQuery
     const {loading, error, data} = useQuery(UserByIdQuery, {
         variables: {
             id: currentUserId
@@ -23,9 +22,10 @@ function StocksListingPage(props) {
     }
 
     const user = data.userById;
+    const stocks = data.userById.stocks.map((userStock) => userStock.stock)
 
     return (
-        <StocksListingView/>
+        <StocksListingView stocks={stocks}/>
     );
 }
 

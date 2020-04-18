@@ -3,12 +3,12 @@ import StocksListingToolbar from "./StocksListingToolbar";
 import StocksListingTable from "./StocksListingTable";
 import ViewTitle from "../../../components/common/ViewTitle";
 
-function StocksListingView({data}) {
+function StocksListingView({stocks}) {
     return (
         <>
             <ViewTitle title="Stocks"/>
             <StocksListingToolbar/>
-            <StocksListingTable data={data}/>
+            <StocksListingTable stocks={stocks}/>
         </>
     );
 }
