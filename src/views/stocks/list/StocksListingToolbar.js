@@ -1,16 +1,18 @@
 import React from 'react';
 
-function StocksListingToolbar(props) {
+function StocksListingToolbar({onClickAddNewStock, onChangeFilterField}) {
     return (
         <div className="row mb-sm-3">
-            <button className="btn btn-success">Add new stock</button>
+            <button className="btn btn-success"
+                    onClick={onClickAddNewStock}>
+                Add new stock
+            </button>
             <form className="form-inline my-2 my-lg-0 ">
                 <input className="form-control mr-sm-2 ml-sm-2"
                        type="search"
                        placeholder="Filter stocks"
-                       aria-label="Filter"/>
-                <button className="btn btn-outline-primary my-2 my-sm-0"
-                        type="submit">Filter</button>
+                       aria-label="Filter"
+                       onChange={onChangeFilterField}/>
             </form>
         </div>
     );

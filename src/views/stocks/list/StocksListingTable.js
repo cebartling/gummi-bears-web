@@ -28,8 +28,8 @@ function StocksListingTable({userStocks}) {
                 </tr>
                 </thead>
                 <tbody>
-                {userStocks.map((userStock) => (
-                    <tr>
+                {userStocks.map((userStock, index) => (
+                    <tr key={index}>
                         <td>{userStock.stock.name}</td>
                         <td>{userStock.stock.symbol}</td>
                         {/*<td className="text-right">{buildPriceString(stock.openPrice)}</td>*/}

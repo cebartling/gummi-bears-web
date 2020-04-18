@@ -3,11 +3,12 @@ import StocksListingToolbar from "./StocksListingToolbar";
 import StocksListingTable from "./StocksListingTable";
 import ViewTitle from "../../../components/common/ViewTitle";
 
-function StocksListingView({userStocks}) {
+function StocksListingView({userStocks, onClickAddNewStock, onChangeFilterField}) {
     return (
         <div className="p-3">
             <ViewTitle title="Stocks"/>
-            <StocksListingToolbar/>
+            <StocksListingToolbar onClickAddNewStock={onClickAddNewStock}
+                                  onChangeFilterField={onChangeFilterField}/>
             <StocksListingTable userStocks={userStocks}/>
         </div>
     );

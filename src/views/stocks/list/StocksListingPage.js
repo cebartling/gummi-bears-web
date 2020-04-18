@@ -20,11 +20,21 @@ function StocksListingPage() {
     }
 
     if (error) {
-        return (<ErrorAlert message="Unable to load the stocks information at this time." />);
+        return (<ErrorAlert message="Unable to load the stocks information at this time."/>);
+    }
+
+    function onClickAddNewStock() {
+        console.log('onClickAddNewStock triggered');
+    }
+
+    function onChangeFilterField(changeEvent) {
+        console.log('onChangeFilterField triggered:', changeEvent);
     }
 
     return (
-        <StocksListingView userStocks={data.userById.stocks}/>
+        <StocksListingView userStocks={data.userById.stocks}
+                           onClickAddNewStock={onClickAddNewStock}
+                           onChangeFilterField={onChangeFilterField}/>
     );
 }
 
