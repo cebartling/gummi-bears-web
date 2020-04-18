@@ -5,8 +5,9 @@ import {userIdSelector} from "../../../redux/selectors";
 import {useQuery} from "@apollo/client";
 import UserByIdQuery from "../../../graphql/queries/user/UserByIdQuery";
 import LoadingAlert from "../../../components/common/LoadingAlert";
+import ErrorAlert from "../../../components/common/ErrorAlert";
 
-function StocksListingPage(props) {
+function StocksListingPage() {
     const currentUserId = useSelector(userIdSelector);
     const {loading, error, data} = useQuery(UserByIdQuery, {
         variables: {
@@ -19,7 +20,7 @@ function StocksListingPage(props) {
     }
 
     if (error) {
-        return (<div>An error occurred with the GraphQL query.</div>);
+        return (<ErrorAlert message="Unable to load the stocks information at this time." />);
     }
 
     return (
