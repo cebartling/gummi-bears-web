@@ -7,6 +7,14 @@ const UserByUsernameQuery = gql`
             firstName
             lastName
             username
+            stocks {
+                id
+                stock {
+                    id
+                    name
+                    symbol
+                }
+            }
         }
     }
 `;
