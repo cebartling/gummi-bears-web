@@ -11,6 +11,7 @@ import {getAuth0Client} from "../../../react-auth0-spa";
 import apolloClient from "../../../graphql/apolloClient";
 import UserByUsernameQuery from "../../../graphql/queries/user/UserByUsernameQuery";
 import CreateUserMutation from "../../../graphql/mutations/user/CreateUserMutation";
+import {setToken} from "../../../utils/LocalStorageAccess";
 
 function* getUser(auth0User) {
     const result = yield apolloClient.query({
@@ -45,7 +46,12 @@ function* signInAsync(action) {
     yield put(createActionSetAuthenticated(yield auth0Client.isAuthenticated()));
     const auth0User = yield auth0Client.getUser();
     yield put(createActionSetUser(auth0User));
-    yield put(createActionSetToken(yield auth0Client.getTokenSilently({})));
+    const accessToken = yield auth0Client.getTokenWithPopup({
+        audience: process.env.REACT_APP_AUTH0_AUDIENCE,
+        scope: 'execute:graphql'
+    });
+    yield put(createActionSetToken(accessToken));
+    setToken(accessToken);
     const systemUser = yield getUser(auth0User);
     if (systemUser) {
         yield put(createActionSetUserId(systemUser.id));

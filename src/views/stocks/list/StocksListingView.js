@@ -1,8 +1,16 @@
 import React from 'react';
+import StocksListingToolbar from "./StocksListingToolbar";
+import StocksListingTable from "./StocksListingTable";
+import ViewTitle from "../../../components/common/ViewTitle";
 
-function StocksListingView(props) {
+function StocksListingView({userStocks, onClickAddNewStock, onChangeFilterField}) {
     return (
-        <h1>Stocks Listing View</h1>
+        <div className="p-3">
+            <ViewTitle title="Stocks"/>
+            <StocksListingToolbar onClickAddNewStock={onClickAddNewStock}
+                                  onChangeFilterField={onChangeFilterField}/>
+            <StocksListingTable userStocks={userStocks}/>
+        </div>
     );
 }
 

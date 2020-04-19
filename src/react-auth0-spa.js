@@ -89,11 +89,11 @@ export const Auth0Provider = ({
                 popupOpen,
                 loginWithPopup,
                 handleRedirectCallback,
-                // getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
-                // getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
-                // loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
-                // getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
-                // logout: (...p) => auth0Client.logout(...p)
+                getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
+                getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
+                loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
+                getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
+                logout: (...p) => auth0Client.logout(...p)
             }}
         >
             {children}

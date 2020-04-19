@@ -1,11 +1,11 @@
 import React from 'react';
 import '../../../../scss/custom.scss';
 import '../../../../scss/animations.scss';
-import StocksListingTable from "../StocksListingTable";
+import StocksListingView from "../StocksListingView";
 
 export default {
-    title: 'StocksListingTable',
-    component: StocksListingTable,
+    title: 'StocksListingView',
+    component: StocksListingView,
 };
 
 const data = [
@@ -15,9 +15,9 @@ const data = [
     {companyName: 'Netflix', stockSymbol: 'NFLX', openPrice: 41307, highPrice: 43492, lowPrice: 41256},
 ];
 
-export const defaultTable = () => (
-    <div className="container mt-3">
-        <StocksListingTable data={data}/>
+export const defaultView = () => (
+    <div className="container-fluid mt-3">
+        <StocksListingView data={data}/>
     </div>
 );
 
