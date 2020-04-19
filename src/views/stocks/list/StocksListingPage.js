@@ -40,7 +40,7 @@ function StocksListingPage() {
             <ViewTitle title="Stocks"/>
             <StocksListingToolbar onClickAddNewStock={onClickAddNewStock}
                                   onChangeFilterField={onChangeFilterField}/>
-            <StocksListingTable userStocks={data.userById.stocks}/>
+            <StocksListingTable userStocks={data.userById.userStocks}/>
         </div>
     );
 }

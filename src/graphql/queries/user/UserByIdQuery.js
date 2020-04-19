@@ -7,7 +7,7 @@ const UserByIdQuery = gql`
             firstName
             lastName
             username
-            stocks {
+            userStocks {
                 id
                 stock {
                     id

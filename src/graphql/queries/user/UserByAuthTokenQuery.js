@@ -7,7 +7,7 @@ const UserByAuthTokenQuery = gql`
             firstName
             lastName
             authToken
-            stocks {
+            userStocks {
                 id
                 stock {
                     id

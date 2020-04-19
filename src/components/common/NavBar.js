@@ -1,12 +1,13 @@
-import React from "react";
-import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {createActionSignIn, createActionSignOut} from "../../redux/actions";
-import {isAuthenticatedSelector, profilePictureUrlSelector} from "../../redux/selectors";
+import React from 'react';
+import {Link} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {createActionSignIn, createActionSignOut} from '../../redux/actions';
+// import {isAuthenticatedSelector, profilePictureUrlSelector} from "../../redux/selectors";
+import {isAuthenticatedSelector} from '../../redux/selectors';
 
 const NavBar = () => {
     const isAuthenticated = useSelector(isAuthenticatedSelector);
-    const profilePictureUrl = useSelector(profilePictureUrlSelector);
+    // const profilePictureUrl = useSelector(profilePictureUrlSelector);
     const dispatch = useDispatch();
 
     const doSignOut = () => {
