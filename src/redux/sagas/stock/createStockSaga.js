@@ -19,6 +19,7 @@ function* createAndAssociateStock(action, userId) {
             }
         }
     });
+    // TODO: Change this.
     return result.data.createUser;
 }
 
