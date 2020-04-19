@@ -10,14 +10,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from "./redux/store";
 import ProviderWrapper from "./ProviderWrapper";
-import IdentityProviderWrapper from "./IdentityProviderWrapper";
 
 const app = (
-    <IdentityProviderWrapper>
-        <ProviderWrapper store={store}>
-            <App/>
-        </ProviderWrapper>
-    </IdentityProviderWrapper>
+    <ProviderWrapper store={store}>
+        <App/>
+    </ProviderWrapper>
 );
 
 ReactDOM.render(app, document.getElementById('root'));

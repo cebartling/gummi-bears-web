@@ -1,4 +1,4 @@
-const KEY_TOKEN = 'bearer-token';
+const KEY_TOKEN = 'auth-token';
 
 export const setToken = (token) => {
     localStorage.setItem(KEY_TOKEN, token);
