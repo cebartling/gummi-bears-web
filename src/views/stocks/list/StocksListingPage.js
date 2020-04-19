@@ -1,11 +1,14 @@
 import React from 'react';
-import StocksListingView from "./StocksListingView";
 import {useSelector} from "react-redux";
 import {userIdSelector} from "../../../redux/selectors";
 import {useQuery} from "@apollo/client";
 import UserByIdQuery from "../../../graphql/queries/user/UserByIdQuery";
 import LoadingAlert from "../../../components/common/LoadingAlert";
 import ErrorAlert from "../../../components/common/ErrorAlert";
+import ViewTitle from "../../../components/common/ViewTitle";
+import StocksListingToolbar from "./StocksListingToolbar";
+import StocksListingTable from "./StocksListingTable";
+import {useHistory} from 'react-router-dom';
 
 function StocksListingPage() {
     const currentUserId = useSelector(userIdSelector);
@@ -14,6 +17,7 @@ function StocksListingPage() {
             id: currentUserId
         }
     });
+    let history = useHistory();
 
     if (loading) {
         return (<LoadingAlert message="Please wait while the stocks information is loaded."/>);
@@ -24,7 +28,7 @@ function StocksListingPage() {
     }
 
     function onClickAddNewStock() {
-        console.log('onClickAddNewStock triggered');
+        history.push('/stock/new');
     }
 
     function onChangeFilterField(changeEvent) {
@@ -32,9 +36,12 @@ function StocksListingPage() {
     }
 
     return (
-        <StocksListingView userStocks={data.userById.stocks}
-                           onClickAddNewStock={onClickAddNewStock}
-                           onChangeFilterField={onChangeFilterField}/>
+        <div className="p-3">
+            <ViewTitle title="Stocks"/>
+            <StocksListingToolbar onClickAddNewStock={onClickAddNewStock}
+                                  onChangeFilterField={onChangeFilterField}/>
+            <StocksListingTable userStocks={data.userById.stocks}/>
+        </div>
     );
 }
 

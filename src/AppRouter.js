@@ -43,6 +43,9 @@ const AppRouter = () => {
                         <GuardedRoute path="/stocks"
                                       exact
                                       component={StocksListingPage}/>
+                        <GuardedRoute path="/stock/new"
+                                      exact
+                                      component={StockDetailPage}/>
                         <GuardedRoute path="/stock/{id}"
                                       exact
                                       component={StockDetailPage}/>

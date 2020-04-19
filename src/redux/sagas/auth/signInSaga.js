@@ -35,9 +35,9 @@ function* signInAsync(action) {
     yield put(createActionSetToken(process.env.REACT_APP_AUTH_TOKEN));
     yield put(createActionSetAuthenticated(true));
     setToken(process.env.REACT_APP_AUTH_TOKEN);
-    const systemUser = yield getUser();
-    if (systemUser) {
-        yield put(createActionSetUserId(systemUser.id));
+    const currentUser = yield getUser();
+    if (currentUser) {
+        yield put(createActionSetUserId(currentUser.id));
     }
 }
 

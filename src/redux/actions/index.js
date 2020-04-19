@@ -6,6 +6,7 @@ import {SET_AUTHENTICATED, createActionSetAuthenticated} from "./auth/setAuthent
 import {CREATE_USER, createActionCreateUser} from "./user/createUser";
 import {UPDATE_USER, createActionUpdateUser} from "./user/updateUser";
 import {SET_USER_ID, createActionSetUserId} from "./user/setUserId";
+import {CREATE_STOCK, createActionCreateStock} from "./stock/createStock";
 
 export {
     SET_AUTHENTICATED,
@@ -16,6 +17,7 @@ export {
     CREATE_USER,
     UPDATE_USER,
     SET_USER_ID,
+    CREATE_STOCK,
 };
 
 export {
@@ -27,4 +29,5 @@ export {
     createActionCreateUser,
     createActionUpdateUser,
     createActionSetUserId,
+    createActionCreateStock,
 };
