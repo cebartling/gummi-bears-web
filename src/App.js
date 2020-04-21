@@ -1,4 +1,6 @@
 import React from 'react';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.scss';
 import AppRouter from './AppRouter';
 import NavBar from './components/common/NavBar';
@@ -11,6 +13,7 @@ function App() {
             <main role="main" className="container-fluid top-margin">
                 <AppRouter/>
             </main>
+            <ToastContainer autoClose={6000}/>
             <Footer/>
         </>
     );

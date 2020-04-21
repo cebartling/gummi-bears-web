@@ -1,23 +1,27 @@
 import React from 'react';
-import {useSelector} from "react-redux";
-import {userIdSelector} from "../../../redux/selectors";
-import {useQuery} from "@apollo/client";
-import UserByIdQuery from "../../../graphql/queries/user/UserByIdQuery";
-import LoadingAlert from "../../../components/common/LoadingAlert";
-import ErrorAlert from "../../../components/common/ErrorAlert";
-import ViewTitle from "../../../components/common/ViewTitle";
-import StocksListingToolbar from "./StocksListingToolbar";
-import StocksListingTable from "./StocksListingTable";
+import {useSelector} from 'react-redux';
+import {useQuery} from '@apollo/client';
 import {useHistory} from 'react-router-dom';
+import {userIdSelector} from '../../../redux/selectors';
+import UserByIdQuery from '../../../graphql/queries/user/UserByIdQuery';
+import LoadingAlert from '../../../components/common/LoadingAlert';
+import ErrorAlert from '../../../components/common/ErrorAlert';
+import ViewTitle from '../../../components/common/ViewTitle';
+import StocksListingToolbar from './StocksListingToolbar';
+import StocksListingTable from './StocksListingTable';
 
-function StocksListingPage() {
+function StocksListingPage({ location }) {
     const currentUserId = useSelector(userIdSelector);
-    const {loading, error, data} = useQuery(UserByIdQuery, {
+    const {loading, error, data, refetch} = useQuery(UserByIdQuery, {
         variables: {
             id: currentUserId
         }
     });
-    let history = useHistory();
+    const history = useHistory();
+
+    if (location.state?.shouldRefetch) {
+        refetch();
+    }
 
     if (loading) {
         return (<LoadingAlert message="Please wait while the stocks information is loaded."/>);

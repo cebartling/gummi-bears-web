@@ -1,10 +1,11 @@
 import {takeEvery, select, put} from 'redux-saga/effects';
-import apolloClient from "../../../graphql/apolloClient";
 import {v4 as uuidv4} from 'uuid';
+import {push} from 'connected-react-router'
+import {toast} from 'react-toastify';
+import apolloClient from "../../../graphql/apolloClient";
 import CreateStockMutation from "../../../graphql/mutations/stock/CreateStockMutation";
 import {userIdSelector} from "../../selectors";
 import {CREATE_STOCK} from "../../actions";
-import {push} from 'connected-react-router'
 
 function* createAndAssociateStock(action, userId) {
     const result = yield apolloClient.mutate({
@@ -29,9 +30,13 @@ function* createStockAsync(action) {
     const userId = yield select(userIdSelector);
     const createStockResult = yield createAndAssociateStock(action, userId);
     if (createStockResult.userStock) {
-        yield put(push('/stocks'))
+        yield put(push('/stocks', {shouldRefetch: true}))
+        toast.success(`Associated ${action.payload.stock.companyName} stock with your profile.`,
+            {position: toast.POSITION.BOTTOM_RIGHT});
     } else {
         yield console.log(`Errors: ${createStockResult.errors}`)
+        toast.error(`Unable to associate ${action.payload.stock.companyName} stock with your profile.`,
+            {position: toast.POSITION.BOTTOM_RIGHT});
     }
 }
 
