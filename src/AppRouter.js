@@ -12,6 +12,8 @@ import LoadingPage from "./pages/LoadingPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProfilePage from "./pages/ProfilePage";
 import StockDetailPage from "./views/stocks/detail/StockDetailPage";
+import MetricsListingPage from "./views/metrics/list/MetricsListingPage";
+import MetricDetailPage from "./views/metrics/detail/MetricDetailPage";
 
 const AppRouter = () => {
     const isAuthenticated = useSelector(isAuthenticatedSelector);
@@ -49,6 +51,15 @@ const AppRouter = () => {
                         <GuardedRoute path="/stock/{id}"
                                       exact
                                       component={StockDetailPage}/>
+                        <GuardedRoute path="/metrics"
+                                      exact
+                                      component={MetricsListingPage}/>
+                        <GuardedRoute path="/metric/new"
+                                      exact
+                                      component={MetricDetailPage}/>
+                        <GuardedRoute path="/metric/{id}"
+                                      exact
+                                      component={MetricDetailPage}/>
                         <GuardedRoute path="/profile"
                                       exact
                                       component={ProfilePage}/>
