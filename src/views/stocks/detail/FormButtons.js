@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {faSave} from "@fortawesome/free-solid-svg-icons";
+import {faCog, faSave} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function FormButtons({canSubmit, isSubmitting}) {
@@ -10,7 +10,7 @@ function FormButtons({canSubmit, isSubmitting}) {
                 <button className="btn btn-primary" type="submit" disabled={!canSubmit}>
                     <FontAwesomeIcon icon={faSave}/> Save
                 </button>
-                <em>{isSubmitting ? "Submitting..." : null}</em>
+                {isSubmitting ? (<FontAwesomeIcon icon={faCog} spin />) : null}
             </div>
         </div>
     );
