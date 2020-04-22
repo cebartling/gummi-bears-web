@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {CSSTransitionGroup} from "react-transition-group";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 function ErrorAlert({message}) {
     return (
@@ -14,7 +16,7 @@ function ErrorAlert({message}) {
             transitionLeaveTimeout={0}>
             <div className="row">
                 <div className="alert alert-danger col-sm-12">
-                    {message}
+                    <FontAwesomeIcon icon={faExclamationTriangle} /> {message}
                 </div>
             </div>
         </CSSTransitionGroup>

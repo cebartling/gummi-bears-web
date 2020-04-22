@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {CSSTransitionGroup} from "react-transition-group";
+import {faInfoCircle} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function LoadingAlert({message}) {
     return (
@@ -14,7 +16,7 @@ function LoadingAlert({message}) {
             transitionLeaveTimeout={0}>
             <div className="row">
                 <div className="alert alert-info col-sm-12">
-                    {message}
+                    <FontAwesomeIcon icon={faInfoCircle} /> {message}
                 </div>
             </div>
         </CSSTransitionGroup>
