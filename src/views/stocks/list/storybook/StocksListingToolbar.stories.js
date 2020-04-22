@@ -9,7 +9,7 @@ export default {
 };
 
 export const defaultToolbar = () => (
-    <div className="container-fluid mt-3">
+    <div className="container mt-3">
         <StocksListingToolbar/>
     </div>
 );
