@@ -1,8 +1,8 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 import {useQuery} from "@apollo/client";
-import UserByIdQuery from "../graphql/queries/user/UserByIdQuery";
-import {userIdSelector} from "../redux/selectors";
+import UserByIdQuery from "../../graphql/queries/user/UserByIdQuery";
+import {userIdSelector} from "../../redux/selectors";
 
 function ProfilePage() {
     const currentUserId = useSelector(userIdSelector);
