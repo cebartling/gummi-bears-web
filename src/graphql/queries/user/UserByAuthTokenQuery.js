@@ -13,6 +13,15 @@ const UserByAuthTokenQuery = gql`
                     id
                     name
                     symbol
+                    latestDailyTimeSeriesEvent {
+                        id
+                        eventDate
+                        openPrice
+                        closePrice
+                        highPrice
+                        lowPrice
+                        volume
+                    }
                 }
             }
         }

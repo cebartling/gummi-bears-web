@@ -1,6 +1,6 @@
 
 export const buildPriceString = (price) => {
-    const dollars = Math.floor(price / 100);
-    const cents = price % 100;
-    return cents >= 10 ? `${dollars}.${cents}` : `${dollars}.0${cents}`;
+    // const parts = price.toString().split('.');
+    // return  parts[1].length === 2 ? `${price}` : `${price}0`;
+    return `${price}`
 };
