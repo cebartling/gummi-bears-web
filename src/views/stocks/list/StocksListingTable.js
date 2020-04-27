@@ -1,8 +1,6 @@
 import React from 'react';
-import {buildPriceString} from "../../../utils/formatting";
 // import PropTypes from 'prop-types';
-import CurrencyFormat from 'react-currency-format';
-
+import StocksListingTableRow from "./StockListingTableRow";
 
 function StocksListingTable({userStocks}) {
 
@@ -27,46 +25,13 @@ function StocksListingTable({userStocks}) {
                     <th scope="col" className="text-right">High</th>
                     <th scope="col" className="text-right">Low</th>
                     <th scope="col" className="text-right">Close</th>
+                    <th scope="col" className="text-right">Volume</th>
+                    <th scope="col" className="text-center">Direction</th>
                 </tr>
                 </thead>
                 <tbody>
                 {userStocks.map((userStock, index) => (
-                    <tr key={index}>
-                        <td>{userStock.stock.name}</td>
-                        <td>{userStock.stock.symbol}</td>
-                        <td className="text-right">
-                            <CurrencyFormat value={userStock.stock.latestDailyTimeSeriesEvent.openPrice}
-                                            displayType={'text'}
-                                            thousandSeparator={true}
-                                            fixedDecimalScale={true}
-                                            decimalScale={2}
-                                            prefix={'$'}/>
-                        </td>
-                        <td className="text-right">
-                            <CurrencyFormat value={userStock.stock.latestDailyTimeSeriesEvent.highPrice}
-                                            displayType={'text'}
-                                            thousandSeparator={true}
-                                            fixedDecimalScale={true}
-                                            decimalScale={2}
-                                            prefix={'$'}/>
-                        </td>
-                        <td className="text-right">
-                            <CurrencyFormat value={userStock.stock.latestDailyTimeSeriesEvent.lowPrice}
-                                            displayType={'text'}
-                                            thousandSeparator={true}
-                                            fixedDecimalScale={true}
-                                            decimalScale={2}
-                                            prefix={'$'}/>
-                        </td>
-                        <td className="text-right">
-                            <CurrencyFormat value={userStock.stock.latestDailyTimeSeriesEvent.closePrice}
-                                            displayType={'text'}
-                                            thousandSeparator={true}
-                                            fixedDecimalScale={true}
-                                            decimalScale={2}
-                                            prefix={'$'}/>
-                        </td>
-                    </tr>
+                    <StocksListingTableRow stock={userStock.stock} key={userStock.stock.id}/>
                 ))}
                 </tbody>
             </table>
