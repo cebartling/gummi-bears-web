@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import {useForm} from "react-form";
-import SymbolField from "./SymbolField";
-import CompanyNameField from "./CompanyNameField";
-import FormButtons from "./FormButtons";
-import {useDispatch} from "react-redux";
-import {createActionCreateStock} from "../../../redux/actions";
+import {useDispatch} from 'react-redux';
+import {useForm} from 'react-form';
+import SymbolField from './SymbolField';
+import CompanyNameField from './CompanyNameField';
+import FormButtons from './FormButtons';
+import {createActionCreateStock} from '../../../redux/actions';
 
-function StockDetailForm({debugForm = false}) {
+function NewStockForm({debugForm = false}) {
     const dispatch = useDispatch();
 
     // Use the useForm hook to create a form instance
@@ -31,9 +31,8 @@ function StockDetailForm({debugForm = false}) {
     );
 }
 
-StockDetailForm.propTypes = {
+NewStockForm.propTypes = {
     debugForm: PropTypes.bool
 };
 
-export default StockDetailForm;
-
+export default NewStockForm;

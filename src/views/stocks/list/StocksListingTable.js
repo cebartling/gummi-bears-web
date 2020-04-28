@@ -31,7 +31,9 @@ function StocksListingTable({userStocks}) {
                 </thead>
                 <tbody>
                 {userStocks.map((userStock, index) => (
-                    <StocksListingTableRow stock={userStock.stock} key={userStock.stock.id}/>
+                    <StocksListingTableRow stock={userStock.stock}
+                                           key={userStock.stock.id}
+                                           userStockId={userStock.id}/>
                 ))}
                 </tbody>
             </table>

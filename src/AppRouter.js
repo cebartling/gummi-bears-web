@@ -1,19 +1,20 @@
 import React from 'react';
-import {Switch} from "react-router-dom";
-import {CSSTransitionGroup} from "react-transition-group";
-import {useLocation} from "react-router";
-import DashboardPage from "./views/dashboards/DashboardPage";
-import StocksListingPage from "./views/stocks/list/StocksListingPage";
-import WelcomePage from "./pages/WelcomePage";
+import {Switch} from 'react-router-dom';
+import {CSSTransitionGroup} from 'react-transition-group';
+import {useLocation} from 'react-router';
+import DashboardPage from './views/dashboards/DashboardPage';
+import StocksListingPage from './views/stocks/list/StocksListingPage';
+import WelcomePage from './pages/WelcomePage';
 import {GuardedRoute, GuardProvider} from 'react-router-guards';
-import {useSelector} from "react-redux";
-import {isAuthenticatedSelector} from "./redux/selectors";
-import LoadingPage from "./pages/LoadingPage";
-import NotFoundPage from "./pages/NotFoundPage";
-import ProfilePage from "./views/profile/ProfilePage";
-import StockDetailPage from "./views/stocks/detail/StockDetailPage";
-import MetricsListingPage from "./views/metrics/list/MetricsListingPage";
-import MetricDetailPage from "./views/metrics/detail/MetricDetailPage";
+import {useSelector} from 'react-redux';
+import {isAuthenticatedSelector} from './redux/selectors';
+import LoadingPage from './pages/LoadingPage';
+import NotFoundPage from './pages/NotFoundPage';
+import ProfilePage from './views/profile/ProfilePage';
+import NewStockPage from './views/stocks/new/NewStockPage';
+import MetricsListingPage from './views/metrics/list/MetricsListingPage';
+import MetricDetailPage from './views/metrics/detail/MetricDetailPage';
+import StockDetailPage from './views/stocks/detail/StockDetailPage';
 
 const AppRouter = () => {
     const isAuthenticated = useSelector(isAuthenticatedSelector);
@@ -47,8 +48,8 @@ const AppRouter = () => {
                                       component={StocksListingPage}/>
                         <GuardedRoute path="/stock/new"
                                       exact
-                                      component={StockDetailPage}/>
-                        <GuardedRoute path="/stock/{id}"
+                                      component={NewStockPage}/>
+                        <GuardedRoute path="/userStock/:userStockId"
                                       exact
                                       component={StockDetailPage}/>
                         <GuardedRoute path="/metrics"
@@ -57,7 +58,7 @@ const AppRouter = () => {
                         <GuardedRoute path="/metric/new"
                                       exact
                                       component={MetricDetailPage}/>
-                        <GuardedRoute path="/metric/{id}"
+                        <GuardedRoute path="/metric/:id"
                                       exact
                                       component={MetricDetailPage}/>
                         <GuardedRoute path="/profile"

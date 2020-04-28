@@ -1,23 +1,19 @@
 import React from 'react';
 import CurrencyFormat from 'react-currency-format';
 import NumberFormat from 'react-number-format';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowCircleDown, faArrowCircleUp} from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
+import StockPriceDirection from "../../../components/common/StockPriceDirection";
 
-function StocksListingTableRow({stock}) {
-
-    const renderDirection = (openPrice, closePrice) => {
-        if (openPrice === closePrice) return null;
-        return (closePrice > openPrice) ?
-            (<FontAwesomeIcon icon={faArrowCircleUp}/>) :
-            (<FontAwesomeIcon icon={faArrowCircleDown}/>);
-    };
+function StocksListingTableRow({stock, userStockId}) {
 
     const {id, name, symbol, latestDailyTimeSeriesEvent} = stock;
+    const userStockDetailUrl = `/userStock/${userStockId}`;
 
     return (
         <tr key={id}>
-            <td>{name}</td>
+            <td>
+                <Link to={userStockDetailUrl}>{name}</Link>
+            </td>
             <td>{symbol}</td>
             <td className="text-right">
                 <CurrencyFormat value={latestDailyTimeSeriesEvent?.openPrice}
@@ -57,8 +53,8 @@ function StocksListingTableRow({stock}) {
                               thousandSeparator={true}/>
             </td>
             <td className="text-center">
-                {renderDirection(latestDailyTimeSeriesEvent?.openPrice,
-                    latestDailyTimeSeriesEvent?.closePrice)}
+                <StockPriceDirection openPrice={latestDailyTimeSeriesEvent?.openPrice}
+                                     closePrice={latestDailyTimeSeriesEvent?.closePrice}/>
             </td>
         </tr>
     )
