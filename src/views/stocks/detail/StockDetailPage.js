@@ -43,6 +43,7 @@ const StockDetailPage = ({match: {params: {userStockId}}}) => {
                                  highPrice={highPrice}
                                  lowPrice={lowPrice}
                                  volume={volume}/>
+
         </div>
     );
 };
