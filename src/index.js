@@ -10,6 +10,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from "./redux/store";
 import ProviderWrapper from "./ProviderWrapper";
+import { TrackJS } from 'trackjs';
+
+TrackJS.install({
+    token: process.env.REACT_APP_TRACKJS_API_TOKEN,
+    application: process.env.REACT_APP_TRACKJS_APPLICATION
+});
 
 const app = (
     <ProviderWrapper store={store}>

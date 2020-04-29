@@ -14401,6 +14401,11 @@ tr46@^1.0.1:
   dependencies:
     punycode "^2.1.0"
 
+trackjs@^3.7.3:
+  version "3.7.3"
+  resolved "https://registry.yarnpkg.com/trackjs/-/trackjs-3.7.3.tgz#c14a36f1f1ea1e6614656c233d71744927ea839a"
+  integrity sha512-N4RuNdgKAlURgOrl+AfENtIN+Dv2ZhFwGromFvmypOP2EvJlrlOMN8DOrNkBSHX4MKTfAwhqBOexRG3l1mOD5Q==
+
 trim-lines@^1.0.0:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/trim-lines/-/trim-lines-1.1.3.tgz#839514be82428fd9e7ec89e35081afe8f6f93115"
