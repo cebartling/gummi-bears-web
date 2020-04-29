@@ -13,10 +13,10 @@ const SlidingTimeSeriesChart = ({timeSeriesData}) => {
                 <YAxis type="number" domain={['dataMin', 'dataMax']}/>
                 <Tooltip/>
                 <Legend/>
-                <Line type="monotone" dataKey="openPrice" stroke="#8884d8" activeDot={{r: 6}}/>
-                <Line type="monotone" dataKey="closePrice" stroke="#82ca9d" activeDot={{r: 6}}/>
-                <Line type="monotone" dataKey="highPrice" stroke="#9C020B" activeDot={{r: 6}}/>
-                <Line type="monotone" dataKey="lowPrice" stroke="#007D9C" activeDot={{r: 6}}/>
+                <Line type="monotone" dataKey="openPrice" name={'Open'} stroke="#8884d8" activeDot={{r: 6}}/>
+                <Line type="monotone" dataKey="closePrice" name={'Close'} stroke="#82ca9d" activeDot={{r: 6}}/>
+                <Line type="monotone" dataKey="highPrice" name={'High'} stroke="#9C020B" activeDot={{r: 6}}/>
+                <Line type="monotone" dataKey="lowPrice" name={'Low'} stroke="#007D9C" activeDot={{r: 6}}/>
             </LineChart>
         </ResponsiveContainer>
     );
