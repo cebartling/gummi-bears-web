@@ -17,6 +17,24 @@ const UserStockByIdQuery = gql`
                     lowPrice
                     volume
                 }
+                dailyTimeSeriesEvents(limit: 30) {
+                    id
+                    eventDate
+                    openPrice
+                    closePrice
+                    highPrice
+                    lowPrice
+                    volume
+                }
+                intradayTimeSeriesEvents(limit: 100) {
+                    id
+                    eventDatetime
+                    openPrice
+                    closePrice
+                    highPrice
+                    lowPrice
+                    volume
+                }
             }
         }
     }

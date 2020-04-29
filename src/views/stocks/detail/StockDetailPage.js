@@ -6,6 +6,7 @@ import LoadingAlert from '../../../components/common/LoadingAlert';
 import ErrorAlert from '../../../components/common/ErrorAlert';
 import StockPriceDirection from '../../../components/common/StockPriceDirection';
 import LatestPricesVolumes from './LatestPricesVolumes';
+import SlidingTimeSeriesChart from "./SlidingTimeSeriesChart";
 
 const StockDetailPage = ({match: {params: {userStockId}}}) => {
     const {loading, error, data} = useQuery(UserStockByIdQuery, {
@@ -26,6 +27,7 @@ const StockDetailPage = ({match: {params: {userStockId}}}) => {
     const {eventDate, openPrice, closePrice, highPrice, lowPrice, volume} =
         data.userStockById?.stock?.latestDailyTimeSeriesEvent;
 
+
     const title = (
         <>
             <StockPriceDirection openPrice={openPrice}
@@ -38,12 +40,17 @@ const StockDetailPage = ({match: {params: {userStockId}}}) => {
     return (
         <div className="p-3">
             <ViewTitle title={title}/>
+            <div className="row">
+                Last updated: {eventDate}
+            </div>
             <LatestPricesVolumes closePrice={closePrice}
                                  openPrice={openPrice}
                                  highPrice={highPrice}
                                  lowPrice={lowPrice}
                                  volume={volume}/>
-
+            <div className="row mt-sm-3">
+                <SlidingTimeSeriesChart timeSeriesData={data.userStockById?.stock?.dailyTimeSeriesEvents}/>
+            </div>
         </div>
     );
 };

@@ -10,7 +10,7 @@ function ViewTitle({title}) {
 }
 
 ViewTitle.propTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.any.isRequired
 }
 
 export default ViewTitle;
