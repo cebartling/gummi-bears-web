@@ -14825,6 +14825,11 @@ use-callback-ref@^1.2.1:
   dependencies:
     "@types/react" "^16.9.11"
 
+use-react-router-breadcrumbs@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/use-react-router-breadcrumbs/-/use-react-router-breadcrumbs-1.0.4.tgz#12b67ba27ac7e6a00e6ae10896ea91e178e87ee2"
+  integrity sha512-SskKm+wFYPD7eiYrg89y1Wn8vMlY+DiZXNFuP4Wt5gMP2aolcahHGR6pRTWsfMW93CEQxdVkXv/ceHL7nfz2Fw==
+
 use-sidecar@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/use-sidecar/-/use-sidecar-1.0.2.tgz#e72f582a75842f7de4ef8becd6235a4720ad8af6"
