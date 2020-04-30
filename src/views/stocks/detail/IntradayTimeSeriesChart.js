@@ -1,17 +1,17 @@
 import React from 'react';
 import {CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
 
-const SlidingTimeSeriesChart = ({timeSeriesData}) => {
+const IntradayTimeSeriesChart = ({timeSeriesData}) => {
 
     return (
         <div className="row mt-sm-3">
-            <h3>Last 30 Days Prices</h3>
+            <h3>Intra-day Prices</h3>
             <ResponsiveContainer width='100%' aspect={2.0 / 0.8}>
                 <LineChart
                     data={timeSeriesData}
                     margin={{top: 5, right: 30, left: 20, bottom: 5,}}>
                     <CartesianGrid strokeDasharray="2 2"/>
-                    <XAxis dataKey="eventDate" reversed={true} name="Date"/>
+                    <XAxis dataKey="eventDatetime" reversed={true} name="Timestamp"/>
                     <YAxis type="number" domain={['dataMin', 'dataMax']}/>
                     <Tooltip/>
                     <Legend/>
@@ -25,4 +25,4 @@ const SlidingTimeSeriesChart = ({timeSeriesData}) => {
     );
 };
 
-export default SlidingTimeSeriesChart;
+export default IntradayTimeSeriesChart;

@@ -7,6 +7,9 @@ import ErrorAlert from '../../../components/common/ErrorAlert';
 import StockPriceDirection from '../../../components/common/StockPriceDirection';
 import LatestPricesVolumes from './LatestPricesVolumes';
 import SlidingTimeSeriesChart from "./SlidingTimeSeriesChart";
+import IntradayTimeSeriesChart from "./IntradayTimeSeriesChart";
+import moment from "moment";
+import Moment from "react-moment";
 
 const StockDetailPage = ({match: {params: {userStockId}}}) => {
     const {loading, error, data} = useQuery(UserStockByIdQuery, {
@@ -41,16 +44,16 @@ const StockDetailPage = ({match: {params: {userStockId}}}) => {
         <div className="p-3">
             <ViewTitle title={title}/>
             <div className="row">
-                Last updated: {eventDate}
+                Last updated: &nbsp;<Moment format="MMMM D, YYYY">{eventDate}</Moment>
             </div>
             <LatestPricesVolumes closePrice={closePrice}
                                  openPrice={openPrice}
                                  highPrice={highPrice}
                                  lowPrice={lowPrice}
                                  volume={volume}/>
-            <div className="row mt-sm-3">
-                <SlidingTimeSeriesChart timeSeriesData={data.userStockById?.stock?.dailyTimeSeriesEvents}/>
-            </div>
+
+            <IntradayTimeSeriesChart timeSeriesData={data.userStockById?.stock?.intradayTimeSeriesEvents}/>
+            <SlidingTimeSeriesChart timeSeriesData={data.userStockById?.stock?.dailyTimeSeriesEvents}/>
         </div>
     );
 };
