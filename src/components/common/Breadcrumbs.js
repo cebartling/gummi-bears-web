@@ -15,15 +15,21 @@ const routes = [
     {path: '/stocks', breadcrumb: 'Stocks'},
 ];
 
+const renderChevrons = (breadcrumbs, currentIndex) => {
+    return currentIndex < breadcrumbs.length - 1 ? '>>' : null;
+};
+
+
 // map & render your breadcrumb components however you want.
 const Breadcrumbs = () => {
     const breadcrumbs = useBreadcrumbs(routes);
 
+
     return (
         <>
-            {breadcrumbs.map(({match, breadcrumb}) => (
+            {breadcrumbs.map(({match, breadcrumb}, index) => (
                 <span key={match.url} className="ml-1">
-                  <NavLink to={match.url}>{breadcrumb}</NavLink>
+                  <NavLink to={match.url}>{breadcrumb}</NavLink> {renderChevrons(breadcrumbs, index)}
                 </span>
             ))}
         </>
