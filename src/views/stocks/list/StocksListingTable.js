@@ -30,7 +30,7 @@ function StocksListingTable({userStocks}) {
                 </tr>
                 </thead>
                 <tbody>
-                {userStocks.map((userStock, index) => (
+                {userStocks.map((userStock) => (
                     <StocksListingTableRow stock={userStock.stock}
                                            key={userStock.stock.id}
                                            userStockId={userStock.id}/>
