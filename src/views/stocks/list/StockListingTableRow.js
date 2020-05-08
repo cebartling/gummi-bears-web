@@ -4,7 +4,7 @@ import NumberFormat from 'react-number-format';
 import {Link} from "react-router-dom";
 import StockPriceDirection from "../../../components/common/StockPriceDirection";
 
-function StocksListingTableRow({stock, userStockId}) {
+const StocksListingTableRow = ({stock, userStockId}) => {
 
     const {id, name, symbol, latestDailyTimeSeriesEvent} = stock;
     const userStockDetailUrl = `/userStock/${userStockId}`;

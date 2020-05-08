@@ -1,21 +1,22 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {useQuery} from '@apollo/client';
-import {useHistory} from 'react-router-dom';
+// import {useHistory} from 'react-router-dom';
 import {userIdSelector} from '../../../redux/selectors';
 import LoadingAlert from '../../../components/common/LoadingAlert';
 import ErrorAlert from '../../../components/common/ErrorAlert';
 import ViewTitle from '../../../components/common/ViewTitle';
-import UserStockTransactionsQuery from "../../../graphql/queries/transactions/UserStockTransactionsQuery";
+import UserStockTransactionsQuery from '../../../graphql/queries/transactions/UserStockTransactionsQuery';
+import TransactionsTable from './TransactionsTable';
 
-function TransactionsPage({ location }) {
+function TransactionsPage({location}) {
     const currentUserId = useSelector(userIdSelector);
     const {loading, error, data, refetch} = useQuery(UserStockTransactionsQuery, {
         variables: {
             id: currentUserId
         }
     });
-    const history = useHistory();
+    // const history = useHistory();
 
     if (location.state?.shouldRefetch) {
         refetch();
@@ -33,13 +34,16 @@ function TransactionsPage({ location }) {
     //     history.push('/stock/new');
     // }
 
-    // function onChangeFilterField(changeEvent) {
-    //     console.log('onChangeFilterField triggered:', changeEvent);
-    // }
-
     return (
         <div className="p-3">
             <ViewTitle title="Transactions"/>
+            {data.userById.userStocks.map((userStock) => {
+                if (userStock.userStockTransactions.length > 0) {
+                    return (<TransactionsTable userStock={userStock}/>);
+                } else {
+                    return null;
+                }
+            })}
         </div>
     );
 }
