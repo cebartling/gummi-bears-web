@@ -1,7 +1,6 @@
 import React from 'react';
 import TransactionTableRow from "./TransactionTableRow";
 // import PropTypes from 'prop-types';
-// import TransactionsTableRow from "./StockListingTableRow";
 
 function TransactionsTable({userStock}) {
 
@@ -18,13 +17,14 @@ function TransactionsTable({userStock}) {
     return (
         <div className="row">
             <h3>{userStock.companyName} - {userStock.stockSymbol}</h3>
-            <table className="table table-bordered table-striped table-hover">
+            <table className="table table-responsive-sm table-bordered table-striped table-hover">
                 <thead>
                 <tr>
                     <th scope="col" className="text-left">Transaction type</th>
-                    <th scope="col" className="text-right">Date/time</th>
+                    <th scope="col" className="text-left">Date and time</th>
                     <th scope="col" className="text-right">Price</th>
-                    <th scope="col" className="text-right">Number of shares</th>
+                    <th scope="col" className="text-right">Shares</th>
+                    <th scope="col" className="text-right">Total amount</th>
                 </tr>
                 </thead>
                 <tbody>

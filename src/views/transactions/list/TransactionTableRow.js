@@ -1,6 +1,7 @@
 import React from 'react';
 import CurrencyFormat from 'react-currency-format';
 import NumberFormat from 'react-number-format';
+import Moment from "react-moment";
 
 const TransactionTableRow = ({userStockTransaction}) => {
 
@@ -9,8 +10,9 @@ const TransactionTableRow = ({userStockTransaction}) => {
             <td className="text-left">
                 {userStockTransaction?.transactionType}
             </td>
-            <td className="text-right">
-                {userStockTransaction?.transactionTimestamp}
+            <td className="text-left">
+                <Moment format="MMM D, YYYY [at] h:mm A"
+                        date={userStockTransaction?.transactionTimestamp}/>
             </td>
             <td className="text-right">
                 <CurrencyFormat value={userStockTransaction?.priceInCents / 100}
@@ -24,6 +26,14 @@ const TransactionTableRow = ({userStockTransaction}) => {
                 <NumberFormat value={userStockTransaction?.sharesCount}
                               displayType={'text'}
                               thousandSeparator={true}/>
+            </td>
+            <td className="text-right">
+                <CurrencyFormat value={userStockTransaction?.totalAmountInCents / 100}
+                                displayType={'text'}
+                                thousandSeparator={true}
+                                fixedDecimalScale={true}
+                                decimalScale={2}
+                                prefix={'$'}/>
             </td>
         </tr>
     )

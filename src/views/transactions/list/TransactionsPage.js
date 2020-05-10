@@ -1,13 +1,14 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {useQuery} from '@apollo/client';
-// import {useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import {userIdSelector} from '../../../redux/selectors';
 import LoadingAlert from '../../../components/common/LoadingAlert';
 import ErrorAlert from '../../../components/common/ErrorAlert';
 import ViewTitle from '../../../components/common/ViewTitle';
 import UserStockTransactionsQuery from '../../../graphql/queries/transactions/UserStockTransactionsQuery';
 import TransactionsTable from './TransactionsTable';
+import TransactionsToolbar from "./TransactionsToolbar";
 
 function TransactionsPage({location}) {
     const currentUserId = useSelector(userIdSelector);
@@ -16,7 +17,7 @@ function TransactionsPage({location}) {
             id: currentUserId
         }
     });
-    // const history = useHistory();
+    const history = useHistory();
 
     if (location.state?.shouldRefetch) {
         refetch();
@@ -30,13 +31,14 @@ function TransactionsPage({location}) {
         return (<ErrorAlert message="Unable to load the transactions information at this time."/>);
     }
 
-    // function onClickAddNewTransaction() {
-    //     history.push('/stock/new');
-    // }
+    function onClickAddNewTransaction() {
+        history.push('/transaction/new');
+    }
 
     return (
         <div className="p-3">
             <ViewTitle title="Transactions"/>
+            <TransactionsToolbar onClickAddNewTransaction={onClickAddNewTransaction}/>
             {data.userById.userStocks.map((userStock) => {
                 if (userStock.userStockTransactions.length > 0) {
                     return (<TransactionsTable userStock={userStock}/>);

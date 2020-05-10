@@ -11,6 +11,7 @@ const UserStockTransactionsQuery = gql`
                     id
                     priceInCents
                     sharesCount
+                    totalAmountInCents
                     transactionTimestamp
                     transactionType
                 }
