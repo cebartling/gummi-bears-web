@@ -1,6 +1,5 @@
 import React from 'react';
 import {Switch} from 'react-router-dom';
-import {CSSTransitionGroup} from 'react-transition-group';
 import {useLocation} from 'react-router';
 import DashboardPage from './views/dashboards/DashboardPage';
 import StocksListingPage from './views/stocks/list/StocksListingPage';
@@ -30,54 +29,45 @@ const AppRouter = () => {
     };
 
     return (
-        <CSSTransitionGroup
-            transitionName="view"
-            transitionAppear={false}
-            transitionEnter={true}
-            transitionLeave={false}
-            transitionAppearTimeout={500}
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={300}>
-            <GuardProvider loading={LoadingPage} error={NotFoundPage}>
-                <Switch key={location.key} location={location}>
-                    <GuardedRoute path="/" exact component={WelcomePage}/>
-                    <GuardProvider guards={[requiresSignIn]}>
-                        <GuardedRoute path="/dashboard"
-                                      exact
-                                      component={DashboardPage}/>
-                        <GuardedRoute path="/stocks"
-                                      exact
-                                      component={StocksListingPage}/>
-                        <GuardedRoute path="/stock/new"
-                                      exact
-                                      component={NewStockPage}/>
-                        <GuardedRoute path="/userStock/:userStockId"
-                                      exact
-                                      component={StockDetailPage}/>
-                        <GuardedRoute path="/metrics"
-                                      exact
-                                      component={MetricsListingPage}/>
-                        <GuardedRoute path="/metric/new"
-                                      exact
-                                      component={MetricDetailPage}/>
-                        <GuardedRoute path="/metric/:id"
-                                      exact
-                                      component={MetricDetailPage}/>
-                        <GuardedRoute path="/transactions"
-                                      exact
-                                      component={TransactionsPage}/>
-                        <GuardedRoute path="/transaction/new"
-                                      exact
-                                      component={NewUserStockTransactionPage}/>
-                        <GuardedRoute path="/profile"
-                                      exact
-                                      component={ProfilePage}/>
-                    </GuardProvider>
-                    <GuardedRoute path="*"
-                                  component={NotFoundPage}/>
-                </Switch>
-            </GuardProvider>
-        </CSSTransitionGroup>
+        <GuardProvider loading={LoadingPage} error={NotFoundPage}>
+            <Switch key={location.key} location={location}>
+                <GuardedRoute path="/" exact component={WelcomePage}/>
+                <GuardProvider guards={[requiresSignIn]}>
+                    <GuardedRoute path="/dashboard"
+                                  exact
+                                  component={DashboardPage}/>
+                    <GuardedRoute path="/stocks"
+                                  exact
+                                  component={StocksListingPage}/>
+                    <GuardedRoute path="/stock/new"
+                                  exact
+                                  component={NewStockPage}/>
+                    <GuardedRoute path="/userStock/:userStockId"
+                                  exact
+                                  component={StockDetailPage}/>
+                    <GuardedRoute path="/metrics"
+                                  exact
+                                  component={MetricsListingPage}/>
+                    <GuardedRoute path="/metric/new"
+                                  exact
+                                  component={MetricDetailPage}/>
+                    <GuardedRoute path="/metric/:id"
+                                  exact
+                                  component={MetricDetailPage}/>
+                    <GuardedRoute path="/transactions"
+                                  exact
+                                  component={TransactionsPage}/>
+                    <GuardedRoute path="/transaction/new"
+                                  exact
+                                  component={NewUserStockTransactionPage}/>
+                    <GuardedRoute path="/profile"
+                                  exact
+                                  component={ProfilePage}/>
+                </GuardProvider>
+                <GuardedRoute path="*"
+                              component={NotFoundPage}/>
+            </Switch>
+        </GuardProvider>
     );
 };
 
