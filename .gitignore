@@ -36,3 +36,4 @@ packages/react-devtools-shell/dist
 
 .env.development
 .env.development.local
+/.firebase/hosting.*.cache
