@@ -1,21 +1,16 @@
 import React from "react";
-import {CSSTransitionGroup} from "react-transition-group";
+import PropTypes from 'prop-types';
 import './ProfilePicture.scss';
 
-const ProfilePicture = (props) => {
+const ProfilePicture = ({src}) => {
 
     return (
-        <CSSTransitionGroup
-            transitionName="view"
-            transitionAppear={true}
-            transitionAppearTimeout={1250}
-            transitionEnter={true}
-            transitionEnterTimeout={0}
-            transitionLeave={false}
-            transitionLeaveTimeout={0}>
-            <img className="profile-picture" src={props.src} alt="Profile"/>
-        </CSSTransitionGroup>
+        <img className="profile-picture" src={src} alt="Profile"/>
     );
+};
+
+ProfilePicture.propTypes = {
+    src: PropTypes.string.isRequired
 };
 
 export default ProfilePicture;
