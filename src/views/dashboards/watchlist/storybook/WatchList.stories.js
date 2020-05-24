@@ -10,33 +10,33 @@ export default {
 
 const data = [
     {
-        watchListStock: {
+        stock: {
             symbol: 'GOOGL',
-            currentPrice: 124500,
+            currentPriceInCents: 124500,
             volume: 7438789,
             percentChange: "-2.34%"
         }
     },
     {
-        watchListStock: {
+        stock: {
             symbol: 'FB',
-            currentPrice: 17517,
+            currentPriceInCents: 17517,
             volume: 7438789,
             percentChange: "2.34%"
         }
     },
     {
-        watchListStock: {
+        stock: {
             symbol: 'MSFT',
-            currentPrice: 17517,
+            currentPriceInCents: 17517,
             volume: 7438789,
             percentChange: "-9.34%"
         }
     },
     {
-        watchListStock: {
+        stock: {
             symbol: 'NFLX',
-            currentPrice: 17517,
+            currentPriceInCents: 17517,
             volume: 7438789,
             percentChange: "12.34%"
         }
@@ -44,6 +44,8 @@ const data = [
 ];
 
 export const defaultComponent = () => (
-    <WatchList watchListStocks={data} />
+    <div className="row">
+        <WatchList watchListStocks={data} />
+    </div>
 );
 
