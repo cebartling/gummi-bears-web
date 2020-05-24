@@ -14,7 +14,7 @@ const data = [
             symbol: 'GOOGL',
             currentPriceInCents: 124500,
             volume: 7438789,
-            percentChange: "-2.34%"
+            percentChange: -2.34
         }
     },
     {
@@ -22,7 +22,7 @@ const data = [
             symbol: 'FB',
             currentPriceInCents: 17517,
             volume: 7438789,
-            percentChange: "2.34%"
+            percentChange: 2.34
         }
     },
     {
@@ -30,7 +30,7 @@ const data = [
             symbol: 'MSFT',
             currentPriceInCents: 17517,
             volume: 7438789,
-            percentChange: "-9.34%"
+            percentChange: -9.34
         }
     },
     {
@@ -38,7 +38,7 @@ const data = [
             symbol: 'NFLX',
             currentPriceInCents: 17517,
             volume: 7438789,
-            percentChange: "12.34%"
+            percentChange: 12.34
         }
     },
 ];

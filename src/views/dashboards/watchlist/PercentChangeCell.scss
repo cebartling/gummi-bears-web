@@ -1,0 +1,11 @@
+.percent-change {
+  &__positive {
+    background-color: #00741e;
+    color: #FFFFFF;
+  }
+
+  &__negative {
+    background-color: #9a000b;
+    color: #FFFFFF;
+  }
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CurrencyFormat from "react-currency-format";
 import NumberFormat from "react-number-format";
+import PercentChangeCell from "./PercentChangeCell";
 
 function WatchList({watchListStocks}) {
     return (
@@ -19,7 +20,9 @@ function WatchList({watchListStocks}) {
                 {watchListStocks.map((watchListStock) => {
                     return (
                         <tr>
-                            <td>{watchListStock.stock.symbol}</td>
+                            <td>
+                                {watchListStock.stock.symbol}
+                            </td>
                             <td className="text-right">
                                 <CurrencyFormat value={watchListStock.stock.currentPriceInCents / 100}
                                                 displayType={'text'}
@@ -33,9 +36,7 @@ function WatchList({watchListStocks}) {
                                               displayType={'text'}
                                               thousandSeparator={true}/>
                             </td>
-                            <td className="text-right">
-                                {watchListStock.stock.percentChange}
-                            </td>
+                            <PercentChangeCell percentChange={watchListStock.stock.percentChange}/>
                         </tr>
                     );
                 })}
@@ -51,7 +52,7 @@ WatchList.propTypes = {
             symbol: PropTypes.string.isRequired,
             currentPriceInCents: PropTypes.number.isRequired,
             volume: PropTypes.number.isRequired,
-            percentChange: PropTypes.string.isRequired,
+            percentChange: PropTypes.number.isRequired,
         }).isRequired
     })).isRequired
 };
