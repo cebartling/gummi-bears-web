@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CurrencyFormat from 'react-currency-format';
 import NumberFormat from 'react-number-format';
 import {Link} from "react-router-dom";
@@ -59,5 +60,21 @@ const StocksListingTableRow = ({stock, userStockId}) => {
         </tr>
     )
 }
+
+StocksListingTableRow.propTypes = {
+    stock: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        symbol: PropTypes.string.isRequired,
+        latestDailyTimeSeriesEvent: PropTypes.shape({
+            openPrice: PropTypes.number.isRequired,
+            closePrice: PropTypes.number.isRequired,
+            highPrice: PropTypes.number.isRequired,
+            lowPrice: PropTypes.number.isRequired,
+            volume: PropTypes.number.isRequired,
+        }).isRequired
+    }).isRequired,
+    userStockId: PropTypes.string.isRequired
+};
 
 export default StocksListingTableRow;

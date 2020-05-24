@@ -1,6 +1,6 @@
 import React from 'react';
 import TransactionTableRow from "./TransactionTableRow";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 function TransactionsTable({userStock}) {
 
@@ -29,7 +29,7 @@ function TransactionsTable({userStock}) {
                 </thead>
                 <tbody>
                 {userStock.userStockTransactions.map((userStockTransaction) => {
-                    return (<TransactionTableRow userStockTransaction={userStockTransaction}/>)
+                    return (<TransactionTableRow userStockTransaction={userStockTransaction} key={userStockTransaction.id}/>)
                 })}
                 </tbody>
             </table>
@@ -37,8 +37,13 @@ function TransactionsTable({userStock}) {
     );
 }
 
-// TransactionsTable.propTypes = {
-//     stocks: PropTypes.arrayOf()
-// }
+TransactionsTable.propTypes = {
+    userStock: PropTypes.shape({
+        stockSymbol: PropTypes.string.isRequired,
+        userStockTransactions: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.string.isRequired
+        })).isRequired
+    }).isRequired
+};
 
 export default TransactionsTable;

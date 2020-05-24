@@ -2,6 +2,7 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {useQuery} from '@apollo/client';
 import {useHistory} from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {userIdSelector} from '../../../redux/selectors';
 import LoadingAlert from '../../../components/common/LoadingAlert';
 import ErrorAlert from '../../../components/common/ErrorAlert';
@@ -41,7 +42,7 @@ function TransactionsPage({location}) {
             <TransactionsToolbar onClickAddNewTransaction={onClickAddNewTransaction}/>
             {data.userById.userStocks.map((userStock) => {
                 if (userStock.userStockTransactions.length > 0) {
-                    return (<TransactionsTable userStock={userStock}/>);
+                    return (<TransactionsTable userStock={userStock} key={userStock.id}/>);
                 } else {
                     return null;
                 }
@@ -49,5 +50,13 @@ function TransactionsPage({location}) {
         </div>
     );
 }
+
+TransactionsTable.propTypes = {
+    location: PropTypes.shape({
+        state: PropTypes.shape({
+            shouldRefetch: PropTypes.bool
+        })
+    })
+};
 
 export default TransactionsPage;
