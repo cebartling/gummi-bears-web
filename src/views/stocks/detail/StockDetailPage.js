@@ -8,7 +8,6 @@ import StockPriceDirection from '../../../components/common/StockPriceDirection'
 import LatestPricesVolumes from './LatestPricesVolumes';
 import SlidingTimeSeriesChart from "./SlidingTimeSeriesChart";
 import IntradayTimeSeriesChart from "./IntradayTimeSeriesChart";
-import moment from "moment";
 import Moment from "react-moment";
 
 const StockDetailPage = ({match: {params: {userStockId}}}) => {

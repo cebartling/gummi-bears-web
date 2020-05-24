@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import StocksListingTableRow from "./StockListingTableRow";
 
 function StocksListingTable({userStocks}) {
@@ -41,8 +41,12 @@ function StocksListingTable({userStocks}) {
     );
 }
 
-// StocksListingTable.propTypes = {
-//     stocks: PropTypes.arrayOf()
-// }
+StocksListingTable.propTypes = {
+    userStocks: PropTypes.arrayOf(PropTypes.shape({
+        stock: PropTypes.shape({
+            id: PropTypes.string.isRequired
+        })
+    }))
+}
 
 export default StocksListingTable;
