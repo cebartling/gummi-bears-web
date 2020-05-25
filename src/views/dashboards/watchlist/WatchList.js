@@ -3,8 +3,14 @@ import PropTypes from 'prop-types';
 import CurrencyFormat from "react-currency-format";
 import NumberFormat from "react-number-format";
 import PercentChangeCell from "./PercentChangeCell";
+import SortDirection from "../../../components/common/SortDirection";
 
-function WatchList({watchListStocks}) {
+const WatchList = ({watchListStocks}) => {
+
+    const onChangeSortDirection = (isAscending) => {
+
+    }
+
     return (
         <div className="col-4">
             <table className="table table-borderless table-dark table-hover">
@@ -13,7 +19,11 @@ function WatchList({watchListStocks}) {
                     <th>Symbol</th>
                     <th className="text-right">Price</th>
                     <th className="text-right">Volume</th>
-                    <th className="text-right">Percent change</th>
+                    <th className="text-right">
+                        Percent change
+                        &nbsp;
+                        <SortDirection onChangeSortDirection={onChangeSortDirection}/>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
