@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
+import PropTypes from 'prop-types';
 
 const BasicCandlestickChart = ({series, title, height}) => {
 
@@ -30,6 +31,12 @@ const BasicCandlestickChart = ({series, title, height}) => {
                             height={height}/>
         </div>
     );
+};
+
+BasicCandlestickChart.propTypes = {
+    series: PropTypes.array.isRequired,
+    title: PropTypes.string.isRequired,
+    height: PropTypes.number.isRequired
 };
 
 export default BasicCandlestickChart;
