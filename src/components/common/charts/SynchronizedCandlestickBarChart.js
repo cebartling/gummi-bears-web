@@ -14,11 +14,11 @@ const SynchronizedCandlestickBarChart = ({seriesData, seriesDataLinear, candlest
     const candlestickOptions = {
         chart: {
             type: 'candlestick',
-                height: candlestickHeight,
-                id: 'candles',
-                toolbar: {
+            height: candlestickHeight,
+            id: 'candles',
+            toolbar: {
                 autoSelected: 'pan',
-                    show: false
+                show: false
             },
             zoom: {
                 enabled: false
@@ -28,7 +28,7 @@ const SynchronizedCandlestickBarChart = ({seriesData, seriesDataLinear, candlest
             candlestick: {
                 colors: {
                     upward: '#3C90EB',
-                        downward: '#DF7D46'
+                    downward: '#DF7D46'
                 }
             }
         },
@@ -40,20 +40,20 @@ const SynchronizedCandlestickBarChart = ({seriesData, seriesDataLinear, candlest
     const barOptions = {
         chart: {
             height: barHeight,
-                type: 'bar',
-                brush: {
+            type: 'bar',
+            brush: {
                 enabled: true,
-                    target: 'candles'
+                target: 'candles'
             },
             selection: {
                 enabled: true,
-                    xaxis: {
+                xaxis: {
                     min: new Date('20 Jan 2017').getTime(),
-                        max: new Date('10 Dec 2017').getTime()
+                    max: new Date('10 Dec 2017').getTime()
                 },
                 fill: {
                     color: '#ccc',
-                        opacity: 0.4
+                    opacity: 0.4
                 },
                 stroke: {
                     color: '#0D47A1',
@@ -66,7 +66,7 @@ const SynchronizedCandlestickBarChart = ({seriesData, seriesDataLinear, candlest
         plotOptions: {
             bar: {
                 columnWidth: '80%',
-                    colors: {
+                colors: {
                     ranges: [{
                         from: -1000,
                         to: 0,
@@ -85,7 +85,7 @@ const SynchronizedCandlestickBarChart = ({seriesData, seriesDataLinear, candlest
         },
         xaxis: {
             type: 'datetime',
-                axisBorder: {
+            axisBorder: {
                 offsetX: 13
             }
         },
