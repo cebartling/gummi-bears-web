@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import WatchListTable from "./WatchListTable";
+import WatchListTable from './WatchListTable';
+import WatchListToolbar from './WatchListToolbar';
+import './WatchList.scss';
 
 const WatchList = ({watchListStocks}) => {
 
     return (
-        <div className="col-4">
+        <div className="col-5 dark-background-color">
             <div>
-                Toolbar goes here
+                <WatchListToolbar />
             </div>
             <div>
                <WatchListTable watchListStocks={watchListStocks}/>

@@ -45,6 +45,7 @@
     "react-router-dom": "5.2.0",
     "react-router-guards": "^1.0.2",
     "react-scripts": "3.4.1",
+    "react-select": "^3.1.0",
     "react-sparklines": "^1.7.0",
     "react-spring": "^8.0.27",
     "react-table": "^7.1.0",
