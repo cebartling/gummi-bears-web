@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import AsyncSelect from 'react-select/async';
 import {useQuery} from '@apollo/client';
 import SymbolSearchQuery from '../../../graphql/queries/stocks/SymbolSearchQuery';
-import './WatchListToolbar.scss';
 
 const WatchListToolbar = ({addWatch}) => {
     const {refetch} = useQuery(SymbolSearchQuery, {skip: true});
@@ -15,9 +14,7 @@ const WatchListToolbar = ({addWatch}) => {
 
     const loadOptions = async (newKeywordsValue) => {
         if (newKeywordsValue.length > 1) {
-            const {data: {symbolSearch}} = await refetch({
-                keywords: newKeywordsValue
-            });
+            const {data: {symbolSearch}} = await refetch({keywords: newKeywordsValue});
             return symbolSearch.map((it) => {
                 return {value: it, label: `${it.symbol} - ${it.name}`};
             });
@@ -32,7 +29,7 @@ const WatchListToolbar = ({addWatch}) => {
     };
 
     return (
-        <div className="p-1 d-flex flex-row">
+        <div className="p-2 d-flex flex-row">
             <div className="flex-grow-1">
                 <AsyncSelect
                     value={selectedOption}
