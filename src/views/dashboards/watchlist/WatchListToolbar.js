@@ -1,27 +1,44 @@
-import React, {useState} from 'react';
-import Select from 'react-select';
+import React from 'react';
+import AsyncSelect from 'react-select/async';
+import {useQuery} from '@apollo/client';
+import SymbolSearchQuery from '../../../graphql/queries/stocks/SymbolSearchQuery';
 import './WatchListToolbar.scss';
 
 const WatchListToolbar = () => {
-    const [selectedOption, setSelectedOption] = useState(undefined);
-
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
-    ];
+    const {refetch} = useQuery(SymbolSearchQuery, {
+        variables: {
+            keywords: 'MSFT'
+        },
+        skip: true
+    });
 
     const onChangeSymbolSearchSelect = selectedOption => {
-        setSelectedOption(selectedOption);
+        console.log(`onChangeSymbolSearchSelect`, selectedOption);
+    };
+
+    const loadOptions = async (newKeywordsValue) => {
+        if (newKeywordsValue.length > 1) {
+            const {data: {symbolSearch}} = await refetch({
+                keywords: newKeywordsValue
+            });
+            return symbolSearch.map((it) => {
+                return {value: it, label: `${it.symbol} - ${it.name}`};
+            });
+        } else {
+            return [];
+        }
     };
 
     return (
         <div className="p-1">
-            <Select
+            <AsyncSelect
+                cacheOptions
+                defaultOptions
+                isClearable={true}
+                placeholder={'Type symbol...'}
                 autofocus={true}
-                value={selectedOption}
+                loadOptions={loadOptions}
                 onChange={onChangeSymbolSearchSelect}
-                options={options}
             />
         </div>
     );

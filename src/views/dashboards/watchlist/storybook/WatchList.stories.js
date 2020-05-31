@@ -2,6 +2,8 @@ import React from 'react';
 import '../../../../scss/custom.scss';
 import '../../../../scss/animations.scss';
 import WatchList from "../WatchList";
+import client from "../../../../stories/storybookApolloClient";
+import {ApolloProvider} from "@apollo/client";
 
 export default {
     title: 'WatchList',
@@ -44,8 +46,12 @@ const data = [
 ];
 
 export const defaultComponent = () => (
+
+
     <div className="row">
-        <WatchList watchListStocks={data} />
+        <ApolloProvider client={client}>
+            <WatchList watchListStocks={data}/>
+        </ApolloProvider>
     </div>
 );
 
