@@ -6,10 +6,14 @@ import './WatchList.scss';
 
 const WatchList = ({watchListStocks}) => {
 
+    const addWatch = (symbolAndCompanyName) => {
+        console.log('addWatch', symbolAndCompanyName);
+    };
+
     return (
         <div className="col-5 dark-background-color">
             <div>
-                <WatchListToolbar />
+                <WatchListToolbar addWatch={addWatch} />
             </div>
             <div>
                <WatchListTable watchListStocks={watchListStocks}/>
