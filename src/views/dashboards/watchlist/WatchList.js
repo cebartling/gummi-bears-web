@@ -1,13 +1,51 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {useDispatch} from "react-redux";
 import WatchListTable from './WatchListTable';
 import WatchListToolbar from './WatchListToolbar';
+import {createActionCreateWatchlistStock} from "../../../redux/actions";
 import './WatchList.scss';
 
-const WatchList = ({watchListStocks}) => {
+const watchListStocks = [
+    {
+        stock: {
+            symbol: 'GOOGL',
+            currentPriceInCents: 124500,
+            volume: 7438789,
+            percentChange: -2.34
+        }
+    },
+    {
+        stock: {
+            symbol: 'FB',
+            currentPriceInCents: 17517,
+            volume: 7438789,
+            percentChange: 2.34
+        }
+    },
+    {
+        stock: {
+            symbol: 'MSFT',
+            currentPriceInCents: 17517,
+            volume: 7438789,
+            percentChange: -9.34
+        }
+    },
+    {
+        stock: {
+            symbol: 'NFLX',
+            currentPriceInCents: 17517,
+            volume: 7438789,
+            percentChange: 12.34
+        }
+    },
+];
+
+const WatchList = () => {
+    const dispatch = useDispatch();
 
     const addWatch = (symbolAndCompanyName) => {
-        console.log('addWatch', symbolAndCompanyName);
+        const stock = {symbol: symbolAndCompanyName.symbol, companyName: symbolAndCompanyName.name};
+        dispatch(createActionCreateWatchlistStock(stock));
     };
 
     return (
@@ -21,16 +59,5 @@ const WatchList = ({watchListStocks}) => {
         </div>
     );
 }
-
-WatchList.propTypes = {
-    watchListStocks: PropTypes.arrayOf(PropTypes.shape({
-        stock: PropTypes.shape({
-            symbol: PropTypes.string.isRequired,
-            currentPriceInCents: PropTypes.number.isRequired,
-            volume: PropTypes.number.isRequired,
-            percentChange: PropTypes.number.isRequired,
-        }).isRequired
-    })).isRequired
-};
 
 export default WatchList;

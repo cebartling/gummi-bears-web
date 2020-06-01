@@ -45,6 +45,11 @@ const data = [
     },
 ];
 
+const addWatch = (symbolAndCompanyName) => {
+    console.log('addWatch', symbolAndCompanyName);
+};
+
+
 
 
 export const defaultComponent = () => (

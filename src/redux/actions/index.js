@@ -7,6 +7,7 @@ import {CREATE_USER, createActionCreateUser} from "./user/createUser";
 import {UPDATE_USER, createActionUpdateUser} from "./user/updateUser";
 import {SET_USER_ID, createActionSetUserId} from "./user/setUserId";
 import {CREATE_STOCK, createActionCreateStock} from "./stock/createStock";
+import {CREATE_WATCHLIST_STOCK, createActionCreateWatchlistStock} from "./stock/createWatchlistStock";
 
 export {
     SET_AUTHENTICATED,
@@ -18,6 +19,7 @@ export {
     UPDATE_USER,
     SET_USER_ID,
     CREATE_STOCK,
+    CREATE_WATCHLIST_STOCK,
 };
 
 export {
@@ -30,4 +32,5 @@ export {
     createActionUpdateUser,
     createActionSetUserId,
     createActionCreateStock,
+    createActionCreateWatchlistStock,
 };

@@ -38,7 +38,7 @@ const WatchListTable = ({watchListStocks}) => {
             <tbody>
             {watchListStocks.sort(isAscending ? ascendingSort : descendingSort).map((watchListStock) => {
                 return (
-                    <tr>
+                    <tr key={watchListStock.stock.symbol}>
                         <td>
                             {watchListStock.stock.symbol}
                         </td>
