@@ -4,6 +4,8 @@ import '../../../../scss/animations.scss';
 import WatchList from "../WatchList";
 import client from "../../../../stories/storybookApolloClient";
 import {ApolloProvider} from "@apollo/client";
+import {Provider} from "react-redux";
+import store from "../../../../redux/store";
 
 export default {
     title: 'WatchList',
@@ -50,14 +52,14 @@ const addWatch = (symbolAndCompanyName) => {
 };
 
 
-
-
 export const defaultComponent = () => (
 
 
     <div className="row">
         <ApolloProvider client={client}>
-            <WatchList watchListStocks={data}/>
+            <Provider store={store}>
+                <WatchList watchListStocks={data}/>
+            </Provider>
         </ApolloProvider>
     </div>
 );
