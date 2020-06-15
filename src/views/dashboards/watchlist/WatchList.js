@@ -5,42 +5,7 @@ import WatchListToolbar from './WatchListToolbar';
 import {createActionCreateWatchlistStock} from "../../../redux/actions";
 import './WatchList.scss';
 
-const watchListStocks = [
-    {
-        stock: {
-            symbol: 'GOOGL',
-            currentPriceInCents: 124500,
-            volume: 7438789,
-            percentChange: -2.34
-        }
-    },
-    {
-        stock: {
-            symbol: 'FB',
-            currentPriceInCents: 17517,
-            volume: 7438789,
-            percentChange: 2.34
-        }
-    },
-    {
-        stock: {
-            symbol: 'MSFT',
-            currentPriceInCents: 17517,
-            volume: 7438789,
-            percentChange: -9.34
-        }
-    },
-    {
-        stock: {
-            symbol: 'NFLX',
-            currentPriceInCents: 17517,
-            volume: 7438789,
-            percentChange: 12.34
-        }
-    },
-];
-
-const WatchList = () => {
+const WatchList = ({watchListStocks}) => {
     const dispatch = useDispatch();
 
     const addWatch = (symbolAndCompanyName) => {

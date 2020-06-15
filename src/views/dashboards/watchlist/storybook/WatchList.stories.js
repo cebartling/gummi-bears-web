@@ -6,59 +6,38 @@ import client from "../../../../stories/storybookApolloClient";
 import {ApolloProvider} from "@apollo/client";
 import {Provider} from "react-redux";
 import store from "../../../../redux/store";
+import {v4 as uuidv4} from 'uuid';
 
 export default {
     title: 'WatchList',
     component: WatchList,
 };
 
-const data = [
+const watchListStocks = [
     {
+        id: uuidv4(),
         stock: {
-            symbol: 'GOOGL',
-            currentPriceInCents: 124500,
-            volume: 7438789,
-            percentChange: -2.34
-        }
-    },
-    {
-        stock: {
-            symbol: 'FB',
-            currentPriceInCents: 17517,
-            volume: 7438789,
-            percentChange: 2.34
-        }
-    },
-    {
-        stock: {
+            id: uuidv4(),
+            name: 'Microsoft Inc.',
             symbol: 'MSFT',
-            currentPriceInCents: 17517,
-            volume: 7438789,
-            percentChange: -9.34
+            currentPrice: 183.54,
+            openPrice: 182.45,
+            highPrice: 184.66,
+            lowPrice: 182.30,
+            previousClosePrice: 181.99,
+            volume: 34827848,
+            percentChange: 1.23,
+            priceChange: 1.45,
+            latestTradingDate: '2020-06-14'
         }
-    },
-    {
-        stock: {
-            symbol: 'NFLX',
-            currentPriceInCents: 17517,
-            volume: 7438789,
-            percentChange: 12.34
-        }
-    },
+    }
 ];
 
-const addWatch = (symbolAndCompanyName) => {
-    console.log('addWatch', symbolAndCompanyName);
-};
-
-
 export const defaultComponent = () => (
-
-
     <div className="row">
         <ApolloProvider client={client}>
             <Provider store={store}>
-                <WatchList watchListStocks={data}/>
+                <WatchList watchListStocks={watchListStocks}/>
             </Provider>
         </ApolloProvider>
     </div>
