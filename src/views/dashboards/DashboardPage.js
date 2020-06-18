@@ -16,17 +16,21 @@ function DashboardPage() {
     });
 
     if (loading) {
-        return (<LoadingAlert message="Please wait while the watch list information is loaded."/>);
+        return (
+            <LoadingAlert message="Please wait while the watch list information is loaded."/>
+        );
     }
 
     if (error) {
-        return (<ErrorAlert message="Unable to load the watch list information at this time."/>);
+        return (
+            <ErrorAlert message="Unable to load the watch list information at this time."/>
+        );
     }
 
     const {userById: {userStocks}} = data;
     return (
         <>
-            <div className="row">
+            <div className="row" data-testid="dashboard-page-watch-list-row">
                 <WatchList watchListStocks={userStocks}/>
             </div>
         </>
