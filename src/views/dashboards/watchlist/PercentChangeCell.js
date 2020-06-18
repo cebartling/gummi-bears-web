@@ -7,7 +7,7 @@ function PercentChangeCell({percentChange}) {
     const classes = `${conditionalStyle} text-right`;
 
     return (
-        <td className={classes}>
+        <td className={classes} data-testid="percent-change-component">
             {percentChange}%
         </td>
     );

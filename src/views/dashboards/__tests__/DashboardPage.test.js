@@ -4,7 +4,6 @@ import {MockedProvider} from "@apollo/client/testing";
 import DashboardPage from "../DashboardPage";
 import WatchListStocksQuery from "../../../graphql/queries/stocks/WatchListStocksQuery";
 import {useSelector} from "react-redux";
-import {getAllByTestId} from "@testing-library/dom";
 
 jest.mock("react-redux", () => ({
     ...jest.requireActual('react-redux'),
@@ -85,7 +84,7 @@ describe('DashboardPage', () => {
         expect(element).toBeDefined();
     });
 
-    it('renders final state', async () => {
+    it('renders final success state', async () => {
         const {getByTestId} = render(
             <MockedProvider mocks={mocks} addTypename={false}>
                 <DashboardPage/>
