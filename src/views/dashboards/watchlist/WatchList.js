@@ -14,7 +14,7 @@ const WatchList = ({watchListStocks}) => {
     };
 
     return (
-        <div className="col-5 dark-background-color">
+        <div className="col-5 dark-background-color" data-testid="watch-list-component">
             <div>
                 <WatchListToolbar addWatch={addWatch} />
             </div>
