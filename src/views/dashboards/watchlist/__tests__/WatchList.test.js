@@ -23,7 +23,7 @@ describe('WatchList', () => {
         useDispatch.mockClear();
     });
 
-    it('renders', () => {
+    it('renders component', () => {
         const {getByTestId} = render(
             <MockedProvider mocks={[]} addTypename={false}>
                 <WatchList watchListStocks={watchListStocks}/>
