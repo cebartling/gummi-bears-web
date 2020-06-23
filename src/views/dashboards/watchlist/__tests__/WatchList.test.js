@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from '@testing-library/react';
+import {fireEvent, render} from '@testing-library/react';
 import {MockedProvider} from "@apollo/client/testing";
 import {useDispatch} from "react-redux";
 import WatchList from '../WatchList';
@@ -31,5 +31,16 @@ describe('WatchList', () => {
         );
         const element = getByTestId(/watch-list-component/i);
         expect(element).toBeDefined();
+    });
+
+    it('addWatch closure', () => {
+        const {getByText} = render(
+            <MockedProvider mocks={[]} addTypename={false}>
+                <WatchList watchListStocks={watchListStocks}/>
+            </MockedProvider>
+        );
+        const addButton = getByText('Add');
+        expect(addButton).toBeDefined();
+        fireEvent.click(addButton);
     });
 });
