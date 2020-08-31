@@ -5,9 +5,12 @@ import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
 
 function ErrorAlert({message}) {
     return (
-        <div className="row">
-            <div className="alert alert-danger col-sm-12">
-                <FontAwesomeIcon icon={faExclamationTriangle}/> {message}
+        <div className="row" data-testid="error-alert-component">
+            <div className="alert alert-danger col-sm-12" data-testid="error-alert-div">
+                <FontAwesomeIcon
+                    icon={faExclamationTriangle}
+                    data-testid="font-awesome-icon-exclamation-triangle"/>
+                {message}
             </div>
         </div>
     );

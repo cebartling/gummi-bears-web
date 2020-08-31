@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function LoadingAlert({message}) {
     return (
-        <div className="row">
+        <div className="row" data-testid="loading-alert-component">
             <div className="alert alert-info col-sm-12">
                 <FontAwesomeIcon icon={faInfoCircle}/> {message}
             </div>
