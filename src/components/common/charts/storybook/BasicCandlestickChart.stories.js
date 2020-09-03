@@ -3,7 +3,7 @@ import BasicCandlestickChart from '../BasicCandlestickChart';
 import {series} from './BasicCandlestickChart.data';
 
 export default {
-    title: 'BasicCandlestickChart',
+    title: 'Charts/BasicCandlestickChart',
     component: BasicCandlestickChart,
 };
 

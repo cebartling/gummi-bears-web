@@ -2,7 +2,7 @@ import React from 'react';
 import FoobarLineChart from "../FoobarLineChart";
 
 export default {
-    title: 'FoobarLineChart',
+    title: 'Charts/FoobarLineChart',
     component: FoobarLineChart,
 };
 

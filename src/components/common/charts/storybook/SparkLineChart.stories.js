@@ -2,7 +2,7 @@ import React from 'react';
 import SparkLineChart from "../SparkLineChart";
 
 export default {
-    title: 'SparkLineChart',
+    title: 'Charts/SparkLineChart',
     component: SparkLineChart,
 };
 

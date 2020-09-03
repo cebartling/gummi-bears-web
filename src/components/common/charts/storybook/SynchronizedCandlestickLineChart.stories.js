@@ -3,7 +3,7 @@ import SynchronizedCandlestickLineChart from "../SynchronizedCandlestickLineChar
 import {lineDataSeries, candlestickDataSeries} from './SynchronizedCandlestickLineChart.data';
 
 export default {
-    title: 'SynchronizedCandlestickLineChart',
+    title: 'Charts/SynchronizedCandlestickLineChart',
     component: SynchronizedCandlestickLineChart,
 };
 
