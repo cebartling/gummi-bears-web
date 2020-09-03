@@ -2,7 +2,7 @@ import React from 'react';
 import ErrorAlert from "../ErrorAlert";
 
 export default {
-    title: 'ErrorAlert',
+    title: 'Common/ErrorAlert',
     component: ErrorAlert,
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import LoadingAlert from "../LoadingAlert";
 
 export default {
-    title: 'LoadingAlert',
+    title: 'Common/LoadingAlert',
     component: LoadingAlert,
 };
 

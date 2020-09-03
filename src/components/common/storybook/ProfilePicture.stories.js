@@ -3,7 +3,7 @@ import ProfilePicture from "../ProfilePicture";
 import imageFile from './DefaultProfilePicture.png';
 
 export default {
-    title: 'ProfilePicture',
+    title: 'Common/ProfilePicture',
     component: ProfilePicture,
 };
 

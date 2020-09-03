@@ -2,7 +2,7 @@ import React from 'react';
 import ViewTitle from "../ViewTitle";
 
 export default {
-    title: 'ViewTitle',
+    title: 'Common/ViewTitle',
     component: ViewTitle,
 };
 
