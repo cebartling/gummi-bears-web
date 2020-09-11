@@ -24,7 +24,7 @@ const StocksListingTableRow = ({stock, userStockId}) => {
                         decimalScale={2}
                         prefix={'$'}/>
       </td>
-      <td className="text-right">
+      <td className="text-right stock-table-cell-high-price">
         <CurrencyFormat value={latestDailyTimeSeriesEvent?.highPrice}
                         displayType={'text'}
                         thousandSeparator={true}
@@ -32,7 +32,7 @@ const StocksListingTableRow = ({stock, userStockId}) => {
                         decimalScale={2}
                         prefix={'$'}/>
       </td>
-      <td className="text-right">
+      <td className="text-right stock-table-cell-low-price">
         <CurrencyFormat value={latestDailyTimeSeriesEvent?.lowPrice}
                         displayType={'text'}
                         thousandSeparator={true}
@@ -40,7 +40,7 @@ const StocksListingTableRow = ({stock, userStockId}) => {
                         decimalScale={2}
                         prefix={'$'}/>
       </td>
-      <td className="text-right">
+      <td className="text-right stock-table-cell-close-price">
         <CurrencyFormat value={latestDailyTimeSeriesEvent?.closePrice}
                         displayType={'text'}
                         thousandSeparator={true}
@@ -48,12 +48,12 @@ const StocksListingTableRow = ({stock, userStockId}) => {
                         decimalScale={2}
                         prefix={'$'}/>
       </td>
-      <td className="text-right">
+      <td className="text-right stock-table-cell-volume">
         <NumberFormat value={latestDailyTimeSeriesEvent?.volume}
                       displayType={'text'}
                       thousandSeparator={true}/>
       </td>
-      <td className="text-center">
+      <td className="text-center stock-table-cell-price-direction">
         <StockPriceDirection openPrice={latestDailyTimeSeriesEvent?.openPrice}
                              closePrice={latestDailyTimeSeriesEvent?.closePrice}/>
       </td>
