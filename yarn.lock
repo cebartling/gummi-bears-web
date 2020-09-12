@@ -5917,17 +5917,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001020, caniuse-lite@^1.0.30001035:
-  version "1.0.30001125"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001125.tgz"
-  integrity sha512-9f+r7BW8Qli917mU3j0fUaTweT3f3vnX/Lcs+1C73V+RADmFme+Ih0Br8vONQi3X0lseOe6ZHfsZLCA8MSjxUA==
-
-caniuse-lite@^1.0.30001038, caniuse-lite@^1.0.30001039:
-  version "1.0.30001125"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001125.tgz"
-  integrity sha512-9f+r7BW8Qli917mU3j0fUaTweT3f3vnX/Lcs+1C73V+RADmFme+Ih0Br8vONQi3X0lseOe6ZHfsZLCA8MSjxUA==
-
-caniuse-lite@^1.0.30001111:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001020, caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001038, caniuse-lite@^1.0.30001039, caniuse-lite@^1.0.30001111:
   version "1.0.30001125"
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001125.tgz"
   integrity sha512-9f+r7BW8Qli917mU3j0fUaTweT3f3vnX/Lcs+1C73V+RADmFme+Ih0Br8vONQi3X0lseOe6ZHfsZLCA8MSjxUA==
@@ -13910,10 +13900,12 @@ react-popper@^1.3.7:
     typed-styles "^0.0.7"
     warning "^4.0.2"
 
-react-query@^2.15.4:
-  version "2.15.4"
-  resolved "https://registry.yarnpkg.com/react-query/-/react-query-2.15.4.tgz#0447510fc30aebba5a4b99879ec4b7155d9b3f20"
-  integrity sha512-gEF2Ebe1MtiyLKEaVEIlRMl6rwvP/RVwP+Xf68vhXDfD91IeZkkW7plRjoaHa0/NeUPM1AgTHb1Z7NtqaYDXjA==
+react-query@^2.17.0:
+  version "2.17.0"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-2.17.0.tgz#ac6c1a17398ab86c65008d7a9a4c0d5385626d10"
+  integrity sha512-YtJ6Oot1vHyAHmllPdINEc0+3NnkjIWUcXZBUiScf+MpcRbzn8zBTc+QLF8dta+Zfm/HPHz1fFMYjAmTOSc/zw==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
 
 react-redux@7.2.1:
   version "7.2.1"
@@ -16153,10 +16145,10 @@ tr46@^1.0.1:
   dependencies:
     punycode "^2.1.0"
 
-trackjs@^3.7.4:
-  version "3.7.4"
-  resolved "https://registry.yarnpkg.com/trackjs/-/trackjs-3.7.4.tgz#480b9dd22a633b594be671f699f005bdd00af1e7"
-  integrity sha512-rcpAd78wdS0+FUgnmMxQkWBytD3OZetZTCSyLwUBltDN2BkLY4A7e9rUd48vhSJLqXB+fETHpIkQt5bXXfVa5Q==
+trackjs@^3.7.5:
+  version "3.7.5"
+  resolved "https://registry.yarnpkg.com/trackjs/-/trackjs-3.7.5.tgz#93e385fb7cae8ebf0d9ec388f127a74b6bdd0f83"
+  integrity sha512-MP03xI2UcDPujqdvYLNjPL79CTTj13dGu+i0vVel+Fl+Jnv1I2C28n6D4zr/ftThjL3Zhe0oWsU+zis0IQ6JOQ==
 
 trim-lines@^1.0.0:
   version "1.1.3"
