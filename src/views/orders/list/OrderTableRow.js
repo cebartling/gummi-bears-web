@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 const OrderTableRow = ({order}) => {
 
     return (
-        <tr key={order.id}>
+        <tr key={order.id} data-order-id={order.id}>
             <td className="text-left">
                 {order?.transactionType}
             </td>
