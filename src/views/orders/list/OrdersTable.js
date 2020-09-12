@@ -17,14 +17,14 @@ function OrdersTable({userStock}) {
     return (
         <div className="row">
             <h3>{userStock.companyName} - {userStock.stockSymbol}</h3>
-            <table className="table table-sm table-responsive-sm table-bordered table-striped table-hover">
+            <table className="table table-sm table-responsive-sm table-bordered table-striped table-hover orders-table">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col" className="text-left">Transaction type</th>
-                    <th scope="col" className="text-left">Local date and time</th>
-                    <th scope="col" className="text-right">Price</th>
-                    <th scope="col" className="text-right">Shares</th>
-                    <th scope="col" className="text-right">Total amount</th>
+                    <th scope="col" className="text-left orders-table-heading-transaction-type">Transaction type</th>
+                    <th scope="col" className="text-left orders-table-heading-transaction-timestamp">Local date and time</th>
+                    <th scope="col" className="text-right orders-table-heading-price">Price</th>
+                    <th scope="col" className="text-right orders-table-heading-shares">Shares</th>
+                    <th scope="col" className="text-right orders-table-heading-total-amount">Total amount</th>
                 </tr>
                 </thead>
                 <tbody>

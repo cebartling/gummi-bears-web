@@ -6,27 +6,31 @@ import {userIdSelector} from '../../../redux/selectors';
 import ViewTitle from '../../../components/common/ViewTitle';
 import OrdersTable from './OrdersTable';
 import OrdersToolbar from "./OrdersToolbar";
+import {useQuery} from "@apollo/client";
+import UserStockOrdersQuery from "../../../graphql/queries/orders/UserStockOrdersQuery";
+import LoadingAlert from "../../../components/common/LoadingAlert";
+import ErrorAlert from "../../../components/common/ErrorAlert";
 
 function OrdersPage({location}) {
     const currentUserId = useSelector(userIdSelector);
-    // const {loading, error, data, refetch} = useQuery(UserStockOrdersQuery, {
-    //     variables: {
-    //         id: currentUserId
-    //     }
-    // });
+    const {loading, error, data, refetch} = useQuery(UserStockOrdersQuery, {
+        variables: {
+            id: currentUserId
+        }
+    });
     const history = useHistory();
 
-    // if (location.state?.shouldRefetch) {
-    //     refetch();
-    // }
-
-    // if (loading) {
-    //     return (<LoadingAlert message="Please wait while the Orders information is loaded."/>);
-    // }
-
-    // if (error) {
-    //     return (<ErrorAlert message="Unable to load the Orders information at this time."/>);
-    // }
+    if (location.state?.shouldRefetch) {
+        refetch();
+    }
+    //
+    if (loading) {
+        return (<LoadingAlert message="Please wait while the orders information is loaded."/>);
+    }
+    //
+    if (error) {
+        return (<ErrorAlert message="Unable to load the orders information at this time."/>);
+    }
 
     function onClickAddNewOrder() {
         history.push('/order/new');
@@ -36,13 +40,13 @@ function OrdersPage({location}) {
         <div className="p-3">
             <ViewTitle title="Orders"/>
             <OrdersToolbar onClickAddNewOrder={onClickAddNewOrder}/>
-            {/*{data.userById.userStocks.map((userStock) => {*/}
-            {/*    if (userStock.userStockOrders.length > 0) {*/}
-            {/*        return (<OrdersTable userStock={userStock} key={userStock.id}/>);*/}
-            {/*    } else {*/}
-            {/*        return null;*/}
-            {/*    }*/}
-            {/*})}*/}
+            {data.userById.userStocks.map((userStock) => {
+                if (userStock.orders.length > 0) {
+                    return (<OrdersTable userStock={userStock} key={userStock.id}/>);
+                } else {
+                    return null;
+                }
+            })}
         </div>
     );
 }
