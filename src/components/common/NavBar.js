@@ -18,7 +18,7 @@ const NavBar = () => {
         dispatch(createActionSignIn());
     };
 
-    const renderAuthenticateNavItems = () => {
+    const renderAuthenticatedNavItems = () => {
         return (
             <>
                 <li className="nav-item">
@@ -32,6 +32,9 @@ const NavBar = () => {
                 {/*</li>*/}
                 <li className="nav-item">
                     <Link to="/transactions" className="nav-link">Transactions</Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/orders" className="nav-link">Orders</Link>
                 </li>
             </>
         );
@@ -65,7 +68,7 @@ const NavBar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <ul className="navbar-nav mr-auto">
-                        {isAuthenticated && renderAuthenticateNavItems()}
+                        {isAuthenticated && renderAuthenticatedNavItems()}
                     </ul>
                     <ul className="navbar-nav">
                         {!isAuthenticated && renderSignInNavItem()}
