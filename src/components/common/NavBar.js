@@ -22,19 +22,19 @@ const NavBar = () => {
         return (
             <>
                 <li className="nav-item">
-                    <Link to="/dashboard" className="nav-link">Dashboard</Link>
+                    <Link to="/dashboard" className="nav-link dashboard-nav-link">Dashboard</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/stocks" className="nav-link">Stocks</Link>
+                    <Link to="/stocks" className="nav-link stocks-nav-link">Stocks</Link>
                 </li>
                 {/*<li className="nav-item">*/}
                 {/*    <Link to="/metrics" className="nav-link">Metrics</Link>*/}
                 {/*</li>*/}
                 <li className="nav-item">
-                    <Link to="/transactions" className="nav-link">Transactions</Link>
+                    <Link to="/transactions" className="nav-link transactions-nav-link">Transactions</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/orders" className="nav-link">Orders</Link>
+                    <Link to="/orders" className="nav-link orders-nav-link">Orders</Link>
                 </li>
             </>
         );
