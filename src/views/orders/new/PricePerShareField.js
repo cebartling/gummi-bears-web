@@ -5,7 +5,7 @@ const PricePerShareField = () => {
   const options = {
     validate: async function (name, instance) {
       if (!name) {
-        return "A price per share is required!";
+        return "Price per share is required!";
       }
       return false;
       // return instance.debounce(async () => {
@@ -22,7 +22,10 @@ const PricePerShareField = () => {
     <div className="form-group row">
       <label htmlFor="pricePerShare" className="col-sm-2 col-form-label">Price per share</label>
       <div className="col-sm-2">
-        <input {...getInputProps()} type="text" id="pricePerShare" className="form-control"/>
+        <input {...getInputProps()}
+               type="text"
+               id="pricePerShare"
+               className="form-control text-right"/>
       </div>
       <div className="col-sm-8 validation-error__message">
         {isValidating ? (<em>Validating...</em>) : isTouched && error ? (<em>{error}</em>) : null}

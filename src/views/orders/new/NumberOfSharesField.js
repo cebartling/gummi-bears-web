@@ -5,7 +5,7 @@ const NumberOfSharesField = () => {
   const options = {
     validate: async function (name, instance) {
       if (!name) {
-        return "A number of shares is required";
+        return "Number of shares is required!";
       }
       return false;
       // return instance.debounce(async () => {
@@ -25,7 +25,7 @@ const NumberOfSharesField = () => {
         <input {...getInputProps()}
                type="text"
                id="numberOfShares"
-               className="form-control"/>
+               className="form-control text-right"/>
       </div>
       <div className="col-sm-8 validation-error__message">
         {isValidating ? (<em>Validating...</em>) : isTouched && error ? (<em>{error}</em>) : null}

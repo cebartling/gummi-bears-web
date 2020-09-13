@@ -18,7 +18,7 @@ function OrdersTable({userStock}) {
         <div className="row">
             <h3>{userStock.companyName} - {userStock.stockSymbol}</h3>
             <table className="table table-sm table-responsive-sm table-bordered table-striped table-hover orders-table">
-                <thead class="thead-dark">
+                <thead className="thead-dark">
                 <tr>
                     <th scope="col" className="text-left orders-table-heading-transaction-type">Transaction type</th>
                     <th scope="col" className="text-left orders-table-heading-transaction-timestamp">Local date and time</th>
