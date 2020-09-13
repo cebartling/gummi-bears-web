@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 const OrdersToolbar = ({onClickAddNewOrder}) => {
     return (
         <div className="row mb-sm-3">
-            <button className="btn btn-success"
+            <button className="btn btn-success new-order-button"
                     onClick={onClickAddNewOrder}>
                 <FontAwesomeIcon icon={faPlusCircle}/>
                 <span className="ml-2">Create an order</span>

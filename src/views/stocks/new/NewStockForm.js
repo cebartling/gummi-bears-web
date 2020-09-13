@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux';
 import {useForm} from 'react-form';
 import SymbolField from './SymbolField';
 import CompanyNameField from './CompanyNameField';
-import FormButtons from './FormButtons';
+import FormButtons from '../../../components/common/FormButtons';
 import {createActionCreateStock} from '../../../redux/actions';
 
 function NewStockForm({debugForm = false}) {

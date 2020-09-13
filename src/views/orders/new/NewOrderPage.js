@@ -1,13 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ViewTitle from "../../../components/common/ViewTitle";
+import NewOrderForm from "./NewOrderForm";
 
 function NewOrderPage() {
-    return (
-        <div className="p-3">
-            <ViewTitle title="New Order"/>
-        </div>
-    );
+  return (
+    <div className="p-3">
+      <ViewTitle title="New Order"/>
+      <NewOrderForm debugForm={false}/>
+    </div>
+  );
 }
 
 NewOrderPage.propTypes = {};
