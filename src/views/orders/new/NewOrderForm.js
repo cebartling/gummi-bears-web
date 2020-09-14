@@ -6,8 +6,9 @@ import FormButtons from "../../../components/common/FormButtons";
 import {createActionCreateOrder} from "../../../redux/actions/order/createOrder";
 import PricePerShareField from "./PricePerShareField";
 import NumberOfSharesField from "./NumberOfSharesField";
+import StockSelectField from "./StockSelectField";
 
-function NewOrderForm({debugForm = false}) {
+function NewOrderForm({stocks, debugForm = false}) {
   const dispatch = useDispatch();
 
   // Use the useForm hook to create a form instance
@@ -23,6 +24,7 @@ function NewOrderForm({debugForm = false}) {
   return (
     <div className="container-fluid">
       <Form>
+        <StockSelectField stocks={stocks}/>
         <PricePerShareField/>
         <NumberOfSharesField/>
         {/*<TotalAmountField/>*/}
