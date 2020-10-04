@@ -8,7 +8,9 @@ function FormButtons2() {
       <div className="offset-sm-2 col-sm-10">
         <button className="btn btn-primary" type="submit">
           <FontAwesomeIcon icon={faSave}/>
-          Save
+          <span className="ml-1">
+            Save
+          </span>
         </button>
         {/* <FontAwesomeIcon icon={faCog} spin /> */}
       </div>

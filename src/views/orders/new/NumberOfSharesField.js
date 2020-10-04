@@ -3,20 +3,20 @@ import PropTypes from "prop-types";
 
 const NumberOfSharesField = ({register, errors, watch, debug = false}) => {
 
-  if (debug) console.log(watch("numberOfShares"));
+  if (debug) console.log(watch("sharesCount"));
 
   return (
     <div className="form-group row">
-      <label htmlFor="numberOfShares" className="col-sm-2 col-form-label">Number of share</label>
+      <label htmlFor="sharesCount" className="col-sm-2 col-form-label">Number of share</label>
       <div className="col-sm-2">
         <input ref={register({required: true})}
                type="text"
-               id="numberOfShares"
-               name="numberOfShares"
+               id="sharesCount"
+               name="sharesCount"
                className="form-control text-right"/>
       </div>
       <div className="col-sm-8 validation-error__message">
-        {errors.numberOfShares && <span>An integral value is required</span>}
+        {errors.sharesCount && <span>An integral value is required</span>}
       </div>
     </div>
   );

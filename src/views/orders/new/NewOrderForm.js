@@ -7,9 +7,10 @@ import NumberOfSharesField from "./NumberOfSharesField";
 import StockSelectField from "./StockSelectField";
 import FormButtons2 from "../../../components/common/FormButtons2";
 import {createActionCreateOrder} from "../../../redux/actions";
+import OrderTypeField from "./OrderTypeField";
 
 
-function NewOrderForm({stocks}) {
+function NewOrderForm({userStocks}) {
   const dispatch = useDispatch();
   const {register, handleSubmit, watch, errors} = useForm();
 
@@ -21,7 +22,8 @@ function NewOrderForm({stocks}) {
     <div className="container-fluid">
       <hr/>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <StockSelectField stocks={stocks} register={register} errors={errors} watch={watch} debug={false}/>
+        <StockSelectField userStocks={userStocks} register={register} errors={errors} watch={watch} debug={false}/>
+        <OrderTypeField register={register} errors={errors} watch={watch} debug={false}/>
         <PricePerShareField register={register} errors={errors} watch={watch} debug={false}/>
         <NumberOfSharesField register={register} errors={errors} watch={watch} debug={false}/>
         {/*/!*<TotalAmountField/>*!/*/}
@@ -32,7 +34,11 @@ function NewOrderForm({stocks}) {
 }
 
 NewOrderForm.propTypes = {
-  stocks: PropTypes.arrayOf(PropTypes.shape({}))
+  userStocks: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    companyName: PropTypes.string.isRequired,
+    stockSymbol: PropTypes.string.isRequired
+  }))
 };
 
 
