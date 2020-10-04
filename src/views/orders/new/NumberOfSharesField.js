@@ -1,39 +1,32 @@
 import React from 'react';
-import {useField} from "react-form";
+import PropTypes from "prop-types";
 
-const NumberOfSharesField = () => {
-  const options = {
-    validate: async function (name, instance) {
-      if (!name) {
-        return "Number of shares is required!";
-      }
-      return false;
-      // return instance.debounce(async () => {
-      //     console.log("checking company name");
-      //     await new Promise(resolve => setTimeout(resolve, 1000));
-      //     All names are valid, so return a false error
-      // return false;
-      // }, 500);
-    }
-  };
-  const {meta: {error, isTouched, isValidating}, getInputProps} = useField('numberOfShares', options);
+const NumberOfSharesField = ({register, errors, watch, debug = false}) => {
+
+  if (debug) console.log(watch("numberOfShares"));
 
   return (
     <div className="form-group row">
       <label htmlFor="numberOfShares" className="col-sm-2 col-form-label">Number of share</label>
       <div className="col-sm-2">
-        <input {...getInputProps()}
+        <input ref={register({required: true})}
                type="text"
                id="numberOfShares"
+               name="numberOfShares"
                className="form-control text-right"/>
       </div>
       <div className="col-sm-8 validation-error__message">
-        {isValidating ? (<em>Validating...</em>) : isTouched && error ? (<em>{error}</em>) : null}
+        {errors.numberOfShares && <span>An integral value is required</span>}
       </div>
     </div>
   );
 };
 
-NumberOfSharesField.propTypes = {};
+NumberOfSharesField.propTypes = {
+  debug: PropTypes.bool,
+  errors: PropTypes.object.isRequired,
+  register: PropTypes.func.isRequired,
+  watch: PropTypes.func.isRequired
+};
 
 export default NumberOfSharesField;

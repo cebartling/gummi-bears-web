@@ -1,34 +1,36 @@
-import {takeEvery, select, put} from 'redux-saga/effects';
+import {select, takeEvery} from 'redux-saga/effects';
 import {v4 as uuidv4} from 'uuid';
-import {push} from 'connected-react-router'
-import {toast} from 'react-toastify';
 import apolloClient from "../../../graphql/apolloClient";
-import CreateStockMutation from "../../../graphql/mutations/stock/CreateStockMutation";
 import {userIdSelector} from "../../selectors";
-import {CREATE_ORDER, CREATE_STOCK} from "../../actions";
+import {CREATE_ORDER} from "../../actions";
+// import CreateOrderMutation from "../../../graphql/mutations/order/CreateOrderMutation";
+// import {now} from "moment";
 
-// function* createAndAssociateStock(action, userId) {
-//     const result = yield apolloClient.mutate({
-//         mutation: CreateStockMutation,
-//         variables: {
-//             input: {
-//                 input: {
-//                     name: action.payload.stock.companyName,
-//                     symbol: action.payload.stock.symbol,
-//                     userId: userId
-//                 },
-//                 clientMutationId: uuidv4()
-//             }
-//         }
-//     });
-//     return result.data.createStock;
-// }
+function* createStockOrder(action) {
+    console.info(action);
+    // const result = yield apolloClient.mutate({
+    //     mutation: CreateOrderMutation,
+    //     variables: {
+    //         input: {
+    //             input: {
+    //                 userStockId: action.payload.order.userStock.id,
+    //                 priceInCents: action.payload.order.priceInCents,
+    //                 sharesCount: action.payload.order.sharesCount,
+    //                 orderTimestamp: now(),
+    //                 transactionType: action.payload.order.transactionType
+    //             },
+    //             clientMutationId: uuidv4()
+    //         }
+    //     }
+    // });
+    // return result.data.createOrder;
+}
 
 function* createOrderAsync(action) {
     // Use a select effect to execute a Redux selector on the store's state
     // More info at https://github.com/redux-saga/redux-saga/tree/master/docs/api#selectselector-args
     const userId = yield select(userIdSelector);
-    // const createStockResult = yield createAndAssociateStock(action, userId);
+    const createOrderResult = yield createStockOrder(action);
     // if (createStockResult.userStock) {
     //     yield put(push('/stocks', {shouldRefetch: true}))
     //     toast.success(`Associated ${action.payload.stock.companyName} stock with your profile.`,
@@ -40,6 +42,6 @@ function* createOrderAsync(action) {
     // }
 }
 
-export function* watchCreateStockAsync() {
+export function* watchCreateOrderAsync() {
     yield takeEvery(CREATE_ORDER, createOrderAsync);
 }

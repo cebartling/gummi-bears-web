@@ -4,6 +4,7 @@ import {watchSignOutAsync} from "./auth/signOutSaga";
 import {watchCreateUserAsync} from "./user/createUserSaga";
 import {watchCreateStockAsync} from "./stock/createStockSaga";
 import {watchCreateWatchlistStockAsync} from "./stock/createWatchlistStockSaga";
+import {watchCreateOrderAsync} from "./order/createOrderSaga";
 
 export default function* rootSaga() {
     yield all([
@@ -12,5 +13,6 @@ export default function* rootSaga() {
         watchCreateUserAsync(),
         watchCreateStockAsync(),
         watchCreateWatchlistStockAsync(),
+        watchCreateOrderAsync(),
     ]);
 }

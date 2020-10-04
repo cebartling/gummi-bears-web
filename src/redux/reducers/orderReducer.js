@@ -1,6 +1,7 @@
 import {CREATE_ORDER} from "../actions";
 
 const initialState = {
+  stockId: undefined,
   pricePerShare: undefined,
   numberOfShares: undefined
 };

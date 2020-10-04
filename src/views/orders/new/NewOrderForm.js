@@ -1,41 +1,38 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import {useDispatch} from "react-redux";
-import {useForm} from "react-form";
-import FormButtons from "../../../components/common/FormButtons";
-import {createActionCreateOrder} from "../../../redux/actions/order/createOrder";
+import {useForm} from "react-hook-form";
 import PricePerShareField from "./PricePerShareField";
 import NumberOfSharesField from "./NumberOfSharesField";
 import StockSelectField from "./StockSelectField";
+import FormButtons2 from "../../../components/common/FormButtons2";
+import {createActionCreateOrder} from "../../../redux/actions";
 
-function NewOrderForm({stocks, debugForm = false}) {
+
+function NewOrderForm({stocks}) {
   const dispatch = useDispatch();
+  const {register, handleSubmit, watch, errors} = useForm();
 
-  // Use the useForm hook to create a form instance
-  const useFormOptions = {
-    onSubmit: async (values, instance) => {
-      dispatch(createActionCreateOrder(values));
-    },
-    debugForm: debugForm,
-    validatePristine: true
+  const onSubmit = data => {
+    dispatch(createActionCreateOrder(data));
   };
-  const {Form, meta: {isSubmitting, canSubmit}} = useForm(useFormOptions);
 
   return (
     <div className="container-fluid">
-      <Form>
-        <StockSelectField stocks={stocks}/>
-        <PricePerShareField/>
-        <NumberOfSharesField/>
-        {/*<TotalAmountField/>*/}
-        <FormButtons canSubmit={canSubmit} isSubmitting={isSubmitting}/>
-      </Form>
+      <hr/>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <StockSelectField stocks={stocks} register={register} errors={errors} watch={watch} debug={false}/>
+        <PricePerShareField register={register} errors={errors} watch={watch} debug={false}/>
+        <NumberOfSharesField register={register} errors={errors} watch={watch} debug={false}/>
+        {/*/!*<TotalAmountField/>*!/*/}
+        <FormButtons2/>
+      </form>
     </div>
   );
 }
 
 NewOrderForm.propTypes = {
-  debugForm: PropTypes.bool
+  stocks: PropTypes.arrayOf(PropTypes.shape({}))
 };
 
 

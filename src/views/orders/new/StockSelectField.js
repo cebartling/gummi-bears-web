@@ -1,35 +1,21 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import {useField} from "react-form";
+import PropTypes from 'prop-types';
 
-const StockSelectField = ({stocks}) => {
+const StockSelectField = ({stocks, register, errors, watch, debug = false}) => {
 
-  const options = {
-    validate: async function (name, instance) {
-      if (!name) {
-        return "Company stock is required!";
-      }
-      return false;
-      // return instance.debounce(async () => {
-      //     console.log("checking company name");
-      //     await new Promise(resolve => setTimeout(resolve, 1000));
-      //     All names are valid, so return a false error
-      // return false;
-      // }, 500);
-    }
-  };
-  const {meta: {error, isTouched, isValidating}, getInputProps} = useField('stock', options);
+  if (debug) console.log(watch("stockId"));
 
   return (
     <div className="form-group row">
-      <label htmlFor="stock" className="col-sm-2 col-form-label">Number of share</label>
+      <label htmlFor="stockId" className="col-sm-2 col-form-label">Stock</label>
       <div className="col-sm-2">
-        <select {...getInputProps()}
-                id="stock"
+        <select ref={register({required: true})}
+                name="stockId"
+                id="stockId"
                 className="form-control">
           {stocks.map((stock) => {
             return (
-              <option value={stock.id}>
+              <option value={stock.id} key={stock.id}>
                 {stock.symbol} - {stock.name}
               </option>
             );
@@ -37,18 +23,22 @@ const StockSelectField = ({stocks}) => {
         </select>
       </div>
       <div className="col-sm-8 validation-error__message">
-        {isValidating ? (<em>Validating...</em>) : isTouched && error ? (<em>{error}</em>) : null}
+        {errors.stockId && <span>A selection is required</span>}
       </div>
     </div>
   );
 };
 
 StockSelectField.propTypes = {
+  debug: PropTypes.bool,
+  errors: PropTypes.object.isRequired,
+  register: PropTypes.func.isRequired,
   stocks: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     symbol: PropTypes.string.isRequired,
-  }))
+  })),
+  watch: PropTypes.func.isRequired
 };
 
 export default StockSelectField;
