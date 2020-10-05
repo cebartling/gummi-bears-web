@@ -1,7 +1,7 @@
 import React from 'react';
 import CurrencyFormat from 'react-currency-format';
 import NumberFormat from 'react-number-format';
-import Moment from "react-moment";
+import DateTimeFormat from '../../../components/common/DateTimeFormat';
 
 const TransactionTableRow = ({userStockTransaction}) => {
 
@@ -11,8 +11,7 @@ const TransactionTableRow = ({userStockTransaction}) => {
                 {userStockTransaction?.transactionType}
             </td>
             <td className="text-left">
-                <Moment format="MMM D, YYYY [at] h:mm A"
-                        date={userStockTransaction?.transactionTimestamp}/>
+              <DateTimeFormat iso8601DateTimeString={userStockTransaction?.transactionTimestamp}/>
             </td>
             <td className="text-right">
                 <CurrencyFormat value={userStockTransaction?.priceInCents / 100}
