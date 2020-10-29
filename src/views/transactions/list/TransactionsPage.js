@@ -51,7 +51,7 @@ function TransactionsPage({location}) {
     );
 }
 
-TransactionsTable.propTypes = {
+TransactionsPage.propTypes = {
     location: PropTypes.shape({
         state: PropTypes.shape({
             shouldRefetch: PropTypes.bool

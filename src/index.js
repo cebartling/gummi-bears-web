@@ -11,7 +11,7 @@ import * as serviceWorker from './serviceWorker';
 import store from "./redux/store";
 import ProviderWrapper from "./ProviderWrapper";
 import { TrackJS } from 'trackjs';
-import * as firebase from "firebase/app";
+import firebase from "firebase";
 
 
 const firebaseConfig = {
