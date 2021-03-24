@@ -10,31 +10,48 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from "./redux/store";
 import ProviderWrapper from "./ProviderWrapper";
-import { TrackJS } from 'trackjs';
+import {TrackJS} from 'trackjs';
 import firebase from "firebase";
 
 
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-    authDomain: `${process.env.REACT_APP_FIREBASE_PROJECT_ID}.firebaseapp.com`,
-    databaseURL: `https://${process.env.REACT_APP_FIREBASE_PROJECT_ID}.firebaseio.com`,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-    storageBucket: `${process.env.REACT_APP_FIREBASE_PROJECT_ID}.appspot.com`,
-    messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
-    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: `${process.env.REACT_APP_FIREBASE_PROJECT_ID}.firebaseapp.com`,
+  databaseURL: `https://${process.env.REACT_APP_FIREBASE_PROJECT_ID}.firebaseio.com`,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: `${process.env.REACT_APP_FIREBASE_PROJECT_ID}.appspot.com`,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 firebase.initializeApp(firebaseConfig);
 
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    const {displayName, email, emailVerified, photoURL, uid, phoneNumber} = user;
+    user.getIdToken().then(function (accessToken) {
+      // store.setCurrentUserModel(displayName, email, emailVerified, photoURL, uid, phoneNumber, accessToken);
+      // @ts-ignore
+      // setUser({displayName, email, emailVerified, photoURL, uid, phoneNumber, accessToken});
+      console.log('User signed in');
+    });
+  } else {
+    // store.clearCurrentUserModel();
+    console.log('User signed out')
+  }
+}, function (error) {
+  console.error(error);
+});
+
 TrackJS.install({
-    token: process.env.REACT_APP_TRACKJS_API_TOKEN,
-    application: process.env.REACT_APP_TRACKJS_APPLICATION
+  token: process.env.REACT_APP_TRACKJS_API_TOKEN,
+  application: process.env.REACT_APP_TRACKJS_APPLICATION
 });
 
 const app = (
-    <ProviderWrapper store={store}>
-        <App/>
-    </ProviderWrapper>
+  <ProviderWrapper store={store}>
+    <App/>
+  </ProviderWrapper>
 );
 
 ReactDOM.render(app, document.getElementById('root'));

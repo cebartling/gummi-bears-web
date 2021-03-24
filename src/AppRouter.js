@@ -18,6 +18,7 @@ import TransactionsPage from "./views/transactions/list/TransactionsPage";
 import NewUserStockTransactionPage from "./views/transactions/new/NewUserStockTransactionPage";
 import NewOrderPage from "./views/orders/new/NewOrderPage";
 import OrdersPage from "./views/orders/list/OrdersPage";
+import FrontDoorView from "./views/frontdoor/FrontDoorView";
 
 const AppRouter = () => {
     const isAuthenticated = useSelector(isAuthenticatedSelector);
@@ -33,7 +34,8 @@ const AppRouter = () => {
     return (
         <GuardProvider loading={LoadingPage} error={NotFoundPage}>
             <Switch key={location.key} location={location}>
-                <GuardedRoute path="/" exact component={WelcomePage}/>
+                <GuardedRoute exact path="/" exact component={FrontDoorView}/>
+                <GuardedRoute path="/welcome" exact component={WelcomePage}/>
                 <GuardProvider guards={[requiresSignIn]}>
                     <GuardedRoute path="/dashboard"
                                   exact
