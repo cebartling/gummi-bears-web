@@ -26,23 +26,6 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-firebase.auth().onAuthStateChanged(function (user) {
-  if (user) {
-    const {displayName, email, emailVerified, photoURL, uid, phoneNumber} = user;
-    user.getIdToken().then(function (accessToken) {
-      // store.setCurrentUserModel(displayName, email, emailVerified, photoURL, uid, phoneNumber, accessToken);
-      // @ts-ignore
-      // setUser({displayName, email, emailVerified, photoURL, uid, phoneNumber, accessToken});
-      console.log('User signed in');
-    });
-  } else {
-    // store.clearCurrentUserModel();
-    console.log('User signed out')
-  }
-}, function (error) {
-  console.error(error);
-});
-
 TrackJS.install({
   token: process.env.REACT_APP_TRACKJS_API_TOKEN,
   application: process.env.REACT_APP_TRACKJS_APPLICATION

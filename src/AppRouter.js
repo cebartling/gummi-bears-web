@@ -34,7 +34,7 @@ const AppRouter = () => {
     return (
         <GuardProvider loading={LoadingPage} error={NotFoundPage}>
             <Switch key={location.key} location={location}>
-                <GuardedRoute exact path="/" exact component={FrontDoorView}/>
+                <GuardedRoute exact path="/" component={FrontDoorView}/>
                 <GuardedRoute path="/welcome" exact component={WelcomePage}/>
                 <GuardProvider guards={[requiresSignIn]}>
                     <GuardedRoute path="/dashboard"
