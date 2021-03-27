@@ -1,29 +1,37 @@
 import React, {lazy, Suspense} from 'react';
 import {Link} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
+import {useHistory} from 'react-router';
+// import {useDispatch} from 'react-redux';
 import 'firebase/firestore';
-import {AuthCheck, useFirestore, useFirestoreDocData} from 'reactfire';
-import {createActionSignOut} from '../../redux/actions';
-import Spinner from "./Spinner";
+import {AuthCheck, useAuth} from 'reactfire';
+// import {createActionSignOut} from '../../redux/actions';
+import Spinner from './Spinner';
 
 const ProfilePicture = lazy(() => import('./ProfilePicture'));
 
+const UnauthenticatedNavBar = () => (<></>);
+
+const UnauthenticatedProfilePicture = () => (<></>);
 
 const NavBar = () => {
-  const dispatch = useDispatch();
-  const foobarRef = useFirestore().collection('profiles').doc('Foobar');
+  // const dispatch = useDispatch();
+  const auth = useAuth();
+  const history = useHistory();
+  // const foobarRef = useFirestore().collection('profiles').doc('Foobar');
   // subscribe to a document for realtime updates. just one line!
-  const {status, data} = useFirestoreDocData(foobarRef);
+  // const {status, data} = useFirestoreDocData(foobarRef);
 
   // easily check the loading status
-  if (status === 'loading') {
-    return <p>Fetching data...</p>;
-  }
+  // if (status === 'loading') {
+  //   return <p>Fetching data...</p>;
+  // }
 
-  console.log(`Firestore data`, data);
+  // console.log(`Firestore data`, data);
 
-  const doSignOut = () => {
-    dispatch(createActionSignOut());
+  const doSignOut = async () => {
+    // dispatch(createActionSignOut());
+    await auth.signOut();
+    history.push('/signIn');
   };
 
   return (
@@ -36,7 +44,7 @@ const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <ul className="navbar-nav mr-auto">
-            <AuthCheck>
+            <AuthCheck fallback={UnauthenticatedNavBar}>
               <li className="nav-item">
                 <Link to="/dashboard" className="nav-link dashboard-nav-link">Dashboard</Link>
               </li>
@@ -53,12 +61,12 @@ const NavBar = () => {
                 <Link to="/orders" className="nav-link orders-nav-link">Orders</Link>
               </li>
               <li className="nav-item">
-                <Link to={{hash: ''}} className="nav-link" onClick={doSignOut}>Sign out</Link>
+                <button onClick={doSignOut} className="btn btn-outline-secondary">Sign out</button>
               </li>
             </AuthCheck>
           </ul>
           <ul className="navbar-nav">
-            <AuthCheck>
+            <AuthCheck fallback={UnauthenticatedProfilePicture}>
               <li className="nav-item">
                 <Link to="/profile" className="nav-link">
                   <Suspense fallback={<Spinner />}>
