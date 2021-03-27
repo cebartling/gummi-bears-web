@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {TrackJS} from 'trackjs';
+import firebase from 'firebase';
+import {FirebaseAppProvider} from 'reactfire';
 // noinspection ES6UnusedImports
 import $ from 'jquery'; // eslint-disable-line no-unused-vars
 // noinspection ES6UnusedImports
@@ -8,11 +11,8 @@ import './scss/custom.scss';
 import './scss/animations.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import store from "./redux/store";
-import ProviderWrapper from "./ProviderWrapper";
-import {TrackJS} from 'trackjs';
-import firebase from "firebase";
-
+import store from './redux/store';
+import ProviderWrapper from './ProviderWrapper';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -32,9 +32,11 @@ TrackJS.install({
 });
 
 const app = (
-  <ProviderWrapper store={store}>
-    <App/>
-  </ProviderWrapper>
+  <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+    <ProviderWrapper store={store}>
+      <App/>
+    </ProviderWrapper>
+  </FirebaseAppProvider>
 );
 
 ReactDOM.render(app, document.getElementById('root'));

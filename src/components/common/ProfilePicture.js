@@ -1,16 +1,16 @@
 import React from "react";
-import PropTypes from 'prop-types';
 import './ProfilePicture.scss';
+import {useUser} from 'reactfire';
 
-const ProfilePicture = ({src}) => {
+const ProfilePicture = () => {
+    const { data: user } = useUser();
 
     return (
-        <img className="profile-picture" src={src} alt="Profile"/>
+        <img className="profile-picture" src={user.photoURL} alt="Profile"/>
     );
 };
 
 ProfilePicture.propTypes = {
-    src: PropTypes.string.isRequired
 };
 
 export default ProfilePicture;
