@@ -1,8 +1,8 @@
 import {put, takeEvery} from 'redux-saga/effects';
-import {createActionSetAuthenticated, createActionSetToken, createActionSetUserId, SIGN_IN} from "../../actions";
-import apolloClient from "../../../graphql/apolloClient";
-import {setToken} from "../../../utils/LocalStorageAccess";
-import UserByAuthTokenQuery from "../../../graphql/queries/user/UserByAuthTokenQuery";
+import {createActionSetAuthenticated, createActionSetToken, createActionSetUserId, SIGN_IN} from '../../actions';
+import apolloClient from '../../../graphql/apolloClient';
+import {setToken} from '../../../utils/LocalStorageAccess';
+import UserByAuthTokenQuery from '../../../graphql/queries/user/UserByAuthTokenQuery';
 
 function* getUser() {
     const result = yield apolloClient.query({
