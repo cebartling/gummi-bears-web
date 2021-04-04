@@ -1,11 +1,10 @@
 import React from 'react';
-import WatchList from "./watchlist/WatchList";
-import {useSelector} from "react-redux";
-import {userIdSelector} from "../../redux/selectors";
-import {useQuery} from "@apollo/client";
-import LoadingAlert from "../../components/common/LoadingAlert";
-import ErrorAlert from "../../components/common/ErrorAlert";
-import WatchListStocksQuery from "../../graphql/queries/stocks/WatchListStocksQuery";
+import {useSelector} from 'react-redux';
+import {useQuery} from '@apollo/client';
+import {userIdSelector} from '../../redux/selectors';
+import LoadingAlert from '../../components/common/LoadingAlert';
+import ErrorAlert from '../../components/common/ErrorAlert';
+import WatchListStocksQuery from '../../graphql/queries/stocks/WatchListStocksQuery';
 
 function DashboardPage() {
     const currentUserId = useSelector(userIdSelector);
@@ -28,10 +27,12 @@ function DashboardPage() {
     }
 
     const {userById: {userStocks}} = data;
+    console.log('User stocks', userStocks);
+
     return (
         <>
             <div className="row" data-testid="dashboard-page-watch-list-row">
-                <WatchList watchListStocks={userStocks}/>
+                {/*<WatchList watchListStocks={userStocks}/>*/}
             </div>
         </>
     );

@@ -4,8 +4,7 @@ const UserByIdQuery = gql`
     query UserById($id: ID!) {
         userById(id: $id) {
             id
-            firstName
-            lastName
+            displayName
             username
             userStocks {
                 id

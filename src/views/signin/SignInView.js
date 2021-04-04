@@ -26,8 +26,8 @@ function SignInView() {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       const {displayName, email, photoURL, uid, phoneNumber} = user;
-      user.getIdToken().then(function (accessToken) {
-        dispatch(createActionSignIn(displayName, email, photoURL, uid, phoneNumber, accessToken));
+      user.getIdToken().then(function (idToken) {
+        dispatch(createActionSignIn(displayName, email, photoURL, uid, phoneNumber, idToken));
         history.push('/dashboard');
       });
     }

@@ -4,8 +4,7 @@ const UserByUsernameQuery = gql`
     query UserByUsername($username: String!) {
         userByUsername(username: $username) {
             id
-            firstName
-            lastName
+            displayName
             username
             userStocks {
                 id
